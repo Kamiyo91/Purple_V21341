@@ -8,7 +8,7 @@ namespace Purple_V21341.Cards
         public override bool OnChooseCard(BattleUnitModel owner)
         {
             return owner.bufListDetail.GetActivatedBufList()
-                .FirstOrDefault(x => x.bufType == KeywordBuf.Smoke)?.stack > 0;
+                .FirstOrDefault(x => x.bufType == KeywordBuf.Smoke)?.stack > 2;
         }
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
         {
@@ -20,7 +20,7 @@ namespace Purple_V21341.Cards
         {
             if (!(unit.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341 buff)) return;
             if (!(unit.bufListDetail.GetActivatedBuf(KeywordBuf.Smoke) is BattleUnitBuf_smoke smoke)) return;
-            smoke.UseStack(1);
+            smoke.UseStack(3);
             buff.OnAddBuf(1);
         }
 

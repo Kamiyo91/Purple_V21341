@@ -38,6 +38,8 @@ namespace Purple_V21341.Passives
             }
             _buff.OnAddBuf(1);
             if (!PhaseChanged) return;
+            owner.allyCardDetail.DrawCards(1);
+            owner.cardSlotDetail.RecoverPlayPoint(1);
             if (_additionalUnit == null || _additionalUnit.IsDead())
             {
                 _count++;
@@ -69,6 +71,7 @@ namespace Purple_V21341.Passives
             owner.breakDetail.RecoverBreakLife(1, true);
             owner.breakDetail.nextTurnBreak = false;
             owner.bufListDetail.AddBufWithoutDuplication(new BattleUnitBuf_KamiyoImmortalUntilRoundEnd());
+            owner.bufListDetail.AddBufWithoutDuplication(new BattleUnitBuf_CardCostM2_V21341());
         }
         private void AddUnit()
         {

@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NOMP3</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -26,7 +26,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NOMP3</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -57,15 +57,28 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Library Of Ruina\LibraryOfRuina_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\StaticDLL\KamiyoStaticUtil\bin\Debug\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\Tower\Tower-Sa21341\bin\Debug\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Library Of Ruina\LibraryOfRuina_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\..\Tower\Tower-Sa21341\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\..\Tower\Tower-Sa21341\bin\Debug\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\PurpleModParameters.cs" />
+    <Compile Include="Buffs\BattleUnitBuf_CardCostM2_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_CardCostM1_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_Clone_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_PurplePoison_V21341.cs" />
@@ -83,6 +96,7 @@
     <Compile Include="Cards\DiceCardSelfAbility_TimePerception_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
+    <Compile Include="Passives\PassiveAbility_Time Recession_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Wonderland_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_MysticEyeOfTimePerception_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_PoisonedBlade_V21341.cs" />

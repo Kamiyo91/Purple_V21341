@@ -13,12 +13,12 @@ namespace Purple_V21341.Passives
 
         public override void OnRoundStartAfter()
         {
-            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId,1));
-            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 1));
-            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 1));
-            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 1));
-            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 1));
-            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 1));
+            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId,2));
+            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 3));
+            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 4));
+            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 2));
+            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 3));
+            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 4));
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_SmokeBomb_V21341>()) owner.bufListDetail.AddBuf(new BattleUnitBuf_SmokeBomb_V21341());
         }
     }

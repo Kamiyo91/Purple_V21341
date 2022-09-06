@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using KamiyoStaticBLL.Models;
 using KamiyoStaticUtil.Utils;
+using MonoMod.Utils;
 using Purple_V21341.BLL;
 
 namespace Purple_V21341
@@ -27,9 +28,51 @@ namespace Purple_V21341
         public void InitParameters()
         {
             ModParameters.PackageIds.Add(PurpleModParameters.PackageId);
-            PurpleModParameters.Path = Path.GetDirectoryName(Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
+            PurpleModParameters.Path =
+                Path.GetDirectoryName(
+                    Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
             ModParameters.Path.Add(PurpleModParameters.Path);
             ModParameters.LocalizePackageIdAndPath.Add(PurpleModParameters.PackageId, PurpleModParameters.Path);
+            ModParameters.SpritePreviewChange.AddRange(new Dictionary<string, List<LorId>>
+            {
+                { "WonderlandDefault_V21341", new List<LorId> { new LorId(PurpleModParameters.PackageId, 10000001) } },
+                { "WonderlandDefault_V21341", new List<LorId> { new LorId(PurpleModParameters.PackageId, 10000002) } }
+            });
+            ModParameters.UntransferablePassives.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 5)
+            });
+            ModParameters.PersonalCardList.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 1), new LorId(PurpleModParameters.PackageId, 2),
+                new LorId(PurpleModParameters.PackageId, 3), new LorId(PurpleModParameters.PackageId, 4)
+            });
+            ModParameters.DynamicNames.AddRange(new Dictionary<LorId, LorId>
+            {
+                { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 2) },
+                { new LorId(PurpleModParameters.PackageId, 10000002), new LorId(PurpleModParameters.PackageId, 2) }
+            });
+            ModParameters.DefaultKeyword.Add(PurpleModParameters.PackageId, "WonderlandModPage_V21341");
+            ModParameters.SupportCharPassive.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 4)
+            });
+            ModParameters.BannedEmotionSelectionUnit.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 10000002)
+            });
+            ModParameters.ForceAggroPassiveIds.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 4)
+            });
+            ModParameters.NoEgoFloorUnit.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 10000002)
+            });
+            ModParameters.BooksIds.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 10000001)
+            });
         }
     }
 }

@@ -11,8 +11,7 @@ namespace Purple_V21341
         {
             _mainPassive = BattleObjectManager.instance.GetAliveList(Faction.Enemy).FirstOrDefault()?.passiveDetail.PassiveList
                         .FirstOrDefault(x => x is PassiveAbility_WonderlandNpc_V21341) as PassiveAbility_WonderlandNpc_V21341;
-            CustomMapHandler.InitCustomMap<Wonderland_V21341MapManager>("Wonderland_V21341", false, true,
-                0.5f, 0.25f, 0.5f, 0.8f);
+            CustomMapHandler.InitCustomMap<Wonderland_V21341MapManager>("Wonderland_V21341");
             //if (_mainPassive == null || !_mainPassive.PhaseChanged) return;
             CustomMapHandler.EnforceMap();
             Singleton<StageController>.Instance.CheckMapChange();

@@ -6,6 +6,8 @@ namespace Purple_V21341.Buffs
     public class BattleUnitBuf_SmokeBomb_V21341 : BattleUnitBuf
     {
         public int HitCount;
+        protected override string keywordId => "SmokeBomb_V21341";
+        protected override string keywordIconId => "SmokeBomb_V21341";
         public override void OnRoundStartAfter()
         {
             HitCount = 0;
