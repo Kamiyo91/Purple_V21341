@@ -70,18 +70,30 @@
     <Compile Include="Buffs\BattleUnitBuf_Clone_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_PurplePoison_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeBomb_V21341.cs" />
+    <Compile Include="Buffs\BattleUnitBuf_SmokeScreenNpc_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeScreen_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_ExhaleSmoke_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_Stab_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_EmergencyStocks_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_PoisonedSword_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_PreparingSmokeBombs_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_Rage_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_SmokeScreen_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_SummonClone_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_TimePerception_V21341.cs" />
+    <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Wonderland_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_MysticEyeOfTimePerception_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_PoisonedBlade_V21341.cs" />
+    <Compile Include="Passives\PassiveAbility_WonderlandNpc_V21341.cs" />
     <Compile Include="Purple_V21341_Init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\CustomMapUtility\Assemblies\CustomMapUtility.cs" />
+    <Compile Include="Wonderland_V21341MapManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Util\CustomMapUtility\README.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

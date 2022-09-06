@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KamiyoStaticUtil.Utils;
+﻿using System.Linq;
 using Purple_V21341.Buffs;
 
 namespace Purple_V21341.Cards
