@@ -9,6 +9,7 @@ namespace Purple_V21341.Buffs
         {
             return false;
         }
+
         public override bool DirectAttack()
         {
             return true;
@@ -38,7 +39,7 @@ namespace Purple_V21341.Buffs
             _aura.transform.localScale = Vector3.one;
             var particleSystems = _aura.gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach (var particleSystem in particleSystems)
-                if (particleSystem.gameObject.name.Equals("Smoke")) particleSystem.gameObject.SetActive(false);
+                if (!particleSystem.gameObject.name.Equals("Smoke")) particleSystem.gameObject.SetActive(false);
         }
     }
 }

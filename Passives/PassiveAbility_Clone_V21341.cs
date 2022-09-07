@@ -5,10 +5,11 @@ namespace Purple_V21341.Passives
 {
     public class PassiveAbility_Clone_V21341 : PassiveAbilityBase
     {
-        public override void OnRoundStartAfter()
+        public override void OnWaveStart()
         {
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>()) owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
         }
+
         public override int GetDamageReduction(BattleDiceBehavior behavior)
         {
             switch (behavior.card.card.XmlData.Spec.Ranged)

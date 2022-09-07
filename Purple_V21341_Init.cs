@@ -35,8 +35,7 @@ namespace Purple_V21341
             ModParameters.LocalizePackageIdAndPath.Add(PurpleModParameters.PackageId, PurpleModParameters.Path);
             ModParameters.SpritePreviewChange.AddRange(new Dictionary<string, List<LorId>>
             {
-                { "WonderlandDefault_V21341", new List<LorId> { new LorId(PurpleModParameters.PackageId, 10000001) } },
-                { "WonderlandDefault_V21341", new List<LorId> { new LorId(PurpleModParameters.PackageId, 10000002) } }
+                { "WonderlandDefault_V21341", new List<LorId> { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 10000002) } },
             });
             ModParameters.UntransferablePassives.AddRange(new List<LorId>
             {
@@ -49,7 +48,7 @@ namespace Purple_V21341
             });
             ModParameters.DynamicNames.AddRange(new Dictionary<LorId, LorId>
             {
-                { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 2) },
+                { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 1) },
                 { new LorId(PurpleModParameters.PackageId, 10000002), new LorId(PurpleModParameters.PackageId, 2) }
             });
             ModParameters.DefaultKeyword.Add(PurpleModParameters.PackageId, "WonderlandModPage_V21341");
@@ -61,10 +60,6 @@ namespace Purple_V21341
             {
                 new LorId(PurpleModParameters.PackageId, 10000002)
             });
-            ModParameters.ForceAggroPassiveIds.AddRange(new List<LorId>
-            {
-                new LorId(PurpleModParameters.PackageId, 4)
-            });
             ModParameters.NoEgoFloorUnit.AddRange(new List<LorId>
             {
                 new LorId(PurpleModParameters.PackageId, 10000002)
@@ -72,6 +67,10 @@ namespace Purple_V21341
             ModParameters.BooksIds.AddRange(new List<LorId>
             {
                 new LorId(PurpleModParameters.PackageId, 10000001)
+            });
+            ModParameters.BookList.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 2)
             });
         }
     }

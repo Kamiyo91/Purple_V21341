@@ -2,9 +2,10 @@
 {
     public class BattleUnitBuf_Clone_V21341 : BattleUnitBuf
     {
-        public override bool IsControllable => false;
+        public override bool IsControllable => _owner.faction == Faction.Enemy;
         public override void OnRoundEndTheLast()
         {
+            if (_owner.faction == Faction.Enemy) return;
             _owner.Die();
             BattleObjectManager.instance.UnregisterUnit(_owner);
         }

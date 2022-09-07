@@ -13,7 +13,6 @@ namespace Purple_V21341.Buffs
         {
             return true;
         }
-
         public override void Init(BattleUnitModel owner)
         {
             base.Init(owner);
@@ -42,7 +41,7 @@ namespace Purple_V21341.Buffs
             _aura.transform.localScale = Vector3.one;
             var particleSystems = _aura.gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach (var particleSystem in particleSystems)
-                if (particleSystem.gameObject.name.Equals("Smoke")) particleSystem.gameObject.SetActive(false);
+                if (!particleSystem.gameObject.name.Equals("Smoke")) particleSystem.gameObject.SetActive(false);
         }
     }
 }

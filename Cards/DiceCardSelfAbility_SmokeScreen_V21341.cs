@@ -9,7 +9,7 @@ namespace Purple_V21341.Cards
         public override bool OnChooseCard(BattleUnitModel owner)
         {
             return owner.bufListDetail.GetActivatedBufList()
-                .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > 4 && BattleObjectManager.instance.GetAliveList(owner.faction).Count > 1;
+                .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > -1 && BattleObjectManager.instance.GetAliveList(owner.faction).Count > 1;
         }
 
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
@@ -29,7 +29,7 @@ namespace Purple_V21341.Cards
             }
 
             if(!unit.bufListDetail.HasBuf<BattleUnitBuf_SmokeScreen_V21341>()) unit.bufListDetail.AddBuf(new BattleUnitBuf_SmokeScreen_V21341());
-            UnitUtil.RemoveDiceTargets(unit);
+            UnitUtil.RemoveDiceTargetsWithoutBreak(unit);
         }
 
         public override bool IsTargetableSelf()

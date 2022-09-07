@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using KamiyoStaticBLL.Models;
 using KamiyoStaticUtil.CommonBuffs;
 using KamiyoStaticUtil.Utils;
 using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
+using UnityEngine;
 
 namespace Purple_V21341.Passives
 {
@@ -22,11 +24,11 @@ namespace Purple_V21341.Passives
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_SmokeBomb_V21341>()) owner.bufListDetail.AddBuf(_buff);
         }
 
-        public override int GetSpeedDiceAdder(int speedDiceResult)
+        public override int SpeedDiceNumAdder()
         {
-            if(!PhaseChanged) return base.GetSpeedDiceAdder(speedDiceResult);
-            if (_additionalUnit == null || _additionalUnit.IsDead()) return 2;
-            return base.GetSpeedDiceAdder(speedDiceResult);
+            if (!PhaseChanged) return 2;
+            if (_additionalUnit == null || _additionalUnit.IsDead()) return 4;
+            return 2;
         }
 
         public override void OnRoundStartAfter()
@@ -36,6 +38,7 @@ namespace Purple_V21341.Passives
                 _buff = new BattleUnitBuf_SmokeBomb_V21341();
                 owner.bufListDetail.AddBuf(_buff);
             }
+            owner.allyCardDetail.DrawCards(1);
             _buff.OnAddBuf(1);
             if (!PhaseChanged) return;
             owner.allyCardDetail.DrawCards(1);
@@ -50,11 +53,11 @@ namespace Purple_V21341.Passives
                     owner.bufListDetail.RemoveBuf(buff);
                 }
             }
-            if (_count < 3) return;
+            if (_count < 2) return;
             _count = 0;
             AddUnit();
-            if(!owner.bufListDetail.HasBuf<BattleUnitBuf_SmokeScreenNpc_V21341>()) owner.bufListDetail.AddBuf(new BattleUnitBuf_SmokeScreenNpc_V21341());
-
+            if (!owner.bufListDetail.HasBuf<BattleUnitBuf_SmokeScreenNpc_V21341>())
+                owner.bufListDetail.AddBuf(new BattleUnitBuf_SmokeScreenNpc_V21341());
         }
 
         public override bool BeforeTakeDamage(BattleUnitModel attacker, int dmg)
@@ -64,7 +67,7 @@ namespace Purple_V21341.Passives
         }
         private void MechHpCheck(int dmg)
         {
-            if (owner.hp - dmg > MechHp && !PhaseChanged) return;
+            if (owner.hp - dmg > MechHp || PhaseChanged) return;
             PhaseChanged = true;
             owner.SetHp(MechHp);
             owner.breakDetail.ResetGauge();
@@ -72,6 +75,7 @@ namespace Purple_V21341.Passives
             owner.breakDetail.nextTurnBreak = false;
             owner.bufListDetail.AddBufWithoutDuplication(new BattleUnitBuf_KamiyoImmortalUntilRoundEnd());
             owner.bufListDetail.AddBufWithoutDuplication(new BattleUnitBuf_CardCostM2_V21341());
+            AddUnit();
         }
         private void AddUnit()
         {
@@ -81,7 +85,7 @@ namespace Purple_V21341.Passives
             {
                 Id = 2,
                 Name = ModParameters.NameTexts
-                            .FirstOrDefault(x => x.Key.Equals(new LorId(PurpleModParameters.PackageId, 2))).Value,
+                    .FirstOrDefault(x => x.Key.Equals(new LorId(PurpleModParameters.PackageId, 2))).Value,
                 Pos = BattleObjectManager.instance.GetList(owner.faction).Count,
                 EmotionLevel = owner.emotionDetail.EmotionLevel,
                 OnWaveStart = true
