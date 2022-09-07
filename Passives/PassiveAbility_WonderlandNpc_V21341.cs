@@ -26,7 +26,9 @@ namespace Purple_V21341.Passives
             PhaseChanged = owner.hp < MechHp;
             _dialog = PhaseChanged;
             _buff = new BattleUnitBuf_SmokeBomb_V21341();
-            if (!owner.bufListDetail.HasBuf<BattleUnitBuf_SmokeBomb_V21341>()) owner.bufListDetail.AddBuf(_buff);
+            if (!(owner.bufListDetail.GetActivatedBufList().Find(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341 buff))
+                owner.bufListDetail.AddBuf(_buff);
+            else _buff = buff; ;
         }
 
         public override int SpeedDiceNumAdder()

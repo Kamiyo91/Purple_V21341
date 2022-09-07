@@ -1,4 +1,5 @@
-﻿using LOR_DiceSystem;
+﻿using KamiyoStaticUtil.Utils;
+using LOR_DiceSystem;
 using Purple_V21341.Buffs;
 
 namespace Purple_V21341.Passives
@@ -26,6 +27,13 @@ namespace Purple_V21341.Passives
                 default:
                     return base.GetDamageReduction(behavior);
             }
+        }
+
+        public override void OnRoundEndTheLast_ignoreDead()
+        {
+            if (owner.faction == Faction.Enemy) return;
+            BattleObjectManager.instance.UnregisterUnit(owner);
+            UnitUtil.RefreshCombatUI();
         }
 
         public override int GetBreakDamageReduction(BattleDiceBehavior behavior)

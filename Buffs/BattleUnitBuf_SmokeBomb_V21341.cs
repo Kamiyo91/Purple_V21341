@@ -17,7 +17,7 @@ namespace Purple_V21341.Buffs
         public override void BeforeTakeDamage(BattleUnitModel attacker, int dmg)
         {
             HitCount++;
-            if (HitCount < 2) return;
+            if (HitCount < 4) return;
             HitCount = 0;
             OnAddBuf(-1);
         }
@@ -31,6 +31,11 @@ namespace Purple_V21341.Buffs
         public override void OnWinParrying(BattleDiceBehavior behavior)
         {
             if (behavior.Detail == BehaviourDetail.Evasion) OnAddBuf(1);
+        }
+
+        public override void BeforeRollDice(BattleDiceBehavior behavior)
+        {
+            if(stack > 9) behavior.ApplyDiceStatBonus(new DiceStatBonus{min = 1,max = 1});
         }
     }
 }

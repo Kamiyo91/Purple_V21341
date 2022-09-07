@@ -11,7 +11,7 @@ namespace Purple_V21341.Cards
         public override bool OnChooseCard(BattleUnitModel owner)
         {
             return owner.bufListDetail.GetActivatedBufList()
-                .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > -4;
+                .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > 4;
         }
 
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
