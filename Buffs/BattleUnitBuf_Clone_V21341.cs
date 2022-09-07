@@ -1,4 +1,6 @@
-﻿namespace Purple_V21341.Buffs
+﻿using KamiyoStaticUtil.Utils;
+
+namespace Purple_V21341.Buffs
 {
     public class BattleUnitBuf_Clone_V21341 : BattleUnitBuf
     {
@@ -7,6 +9,7 @@
         {
             if (_owner.faction == Faction.Enemy) return;
             BattleObjectManager.instance.UnregisterUnit(_owner);
+            UnitUtil.RefreshCombatUI();
         }
 
         public override int GetCardCostAdder(BattleDiceCardModel card)

@@ -39,7 +39,7 @@ namespace Purple_V21341
             });
             ModParameters.UntransferablePassives.AddRange(new List<LorId>
             {
-                new LorId(PurpleModParameters.PackageId, 5)
+                new LorId(PurpleModParameters.PackageId, 5),new LorId(PurpleModParameters.PackageId, 4)
             });
             ModParameters.PersonalCardList.AddRange(new List<LorId>
             {
