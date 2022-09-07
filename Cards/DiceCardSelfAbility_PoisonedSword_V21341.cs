@@ -12,7 +12,7 @@ namespace Purple_V21341.Cards
             owner.cardSlotDetail.RecoverPlayPoint(1);
             owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 3, owner);
             _passive = owner.passiveDetail.PassiveList.FirstOrDefault(x => x is PassiveAbility_PoisonedBlade_V21341) as PassiveAbility_PoisonedBlade_V21341;
-            if (_passive != null) _passive.BuffUsed = true;
+            if (_passive != null) _passive.Multiplier = 2;
         }
     }
 }
