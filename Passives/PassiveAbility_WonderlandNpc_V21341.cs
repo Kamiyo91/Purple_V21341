@@ -28,7 +28,7 @@ namespace Purple_V21341.Passives
             _buff = new BattleUnitBuf_SmokeBomb_V21341();
             if (!(owner.bufListDetail.GetActivatedBufList().Find(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341 buff))
                 owner.bufListDetail.AddBuf(_buff);
-            else _buff = buff; ;
+            else _buff = buff;
         }
 
         public override int SpeedDiceNumAdder()

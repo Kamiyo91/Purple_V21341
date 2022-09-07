@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using KamiyoStaticUtil.Utils;
 using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
@@ -7,6 +8,8 @@ namespace Purple_V21341.Passives
     public class PassiveAbility_Wonderland_V21341 : PassiveAbilityBase
     {
         private BattleUnitBuf_SmokeBomb_V21341 _buff;
+        public BattleUnitModel Clone;
+        public bool SummonUsed;
         public override void OnWaveStart()
         {
             _buff = new BattleUnitBuf_SmokeBomb_V21341();
@@ -30,6 +33,18 @@ namespace Purple_V21341.Passives
                 owner.bufListDetail.AddBuf(_buff);
             }
             _buff.OnAddBuf(1);
+            if (!SummonUsed) return;
+            SummonUsed = false;
+            if (Clone == null) return;
+            BattleObjectManager.instance.UnregisterUnit(Clone);
+            UnitUtil.RefreshCombatUI();
+            Clone.Book.owner = null;
+            Clone = null;
+        }
+
+        public override void OnBattleEnd()
+        {
+            if (Clone != null) Clone.Book.owner = null;
         }
     }
 }

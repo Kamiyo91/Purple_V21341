@@ -3,6 +3,7 @@ using KamiyoStaticBLL.Models;
 using KamiyoStaticUtil.Utils;
 using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
+using Purple_V21341.Passives;
 
 namespace Purple_V21341.Cards
 {
@@ -26,17 +27,21 @@ namespace Purple_V21341.Cards
                     .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341
                 buff)
                 buff.OnAddBuf(-5);
-            SummonSpecialUnit(Singleton<StageController>.Instance.GetCurrentStageFloorModel(), 10000002, new LorId(PurpleModParameters.PackageId, 2), unit.emotionDetail.EmotionLevel);
+            var cloneUnit = SummonSpecialUnit(Singleton<StageController>.Instance.GetCurrentStageFloorModel(), 10000002, new LorId(PurpleModParameters.PackageId, 2), unit.emotionDetail.EmotionLevel);
             UnitUtil.RefreshCombatUI();
+            if (!(unit.passiveDetail.PassiveList.FirstOrDefault(x => x is PassiveAbility_Wonderland_V21341) is
+                    PassiveAbility_Wonderland_V21341 passive)) return;
+            passive.SummonUsed = true;
+            passive.Clone = cloneUnit;
         }
 
         public override bool IsTargetableSelf()
         {
             return true;
         }
-        public static void SummonSpecialUnit(StageLibraryFloorModel floor, int unitId, LorId unitNameId, int emotionLevel)
+        public static BattleUnitModel SummonSpecialUnit(StageLibraryFloorModel floor, int unitId, LorId unitNameId, int emotionLevel)
         {
-            UnitUtil.AddNewUnitPlayerSideCustomDataOnPlay(floor, new UnitModel
+            return UnitUtil.AddNewUnitPlayerSideCustomDataOnPlay(floor, new UnitModel
             {
                 Id = unitId,
                 Name = ModParameters.NameTexts

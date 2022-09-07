@@ -29,13 +29,6 @@ namespace Purple_V21341.Passives
             }
         }
 
-        public override void OnRoundEndTheLast_ignoreDead()
-        {
-            if (owner.faction == Faction.Enemy) return;
-            BattleObjectManager.instance.UnregisterUnit(owner);
-            UnitUtil.RefreshCombatUI();
-        }
-
         public override int GetBreakDamageReduction(BattleDiceBehavior behavior)
         {
             switch (behavior.card.card.XmlData.Spec.Ranged)
