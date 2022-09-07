@@ -6,7 +6,6 @@
         public override void OnRoundEndTheLast()
         {
             if (_owner.faction == Faction.Enemy) return;
-            _owner.Die();
             BattleObjectManager.instance.UnregisterUnit(_owner);
         }
 

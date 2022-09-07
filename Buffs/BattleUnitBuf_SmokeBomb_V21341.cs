@@ -11,7 +11,7 @@ namespace Purple_V21341.Buffs
         public override void OnRoundStartAfter()
         {
             HitCount = 0;
-            if (stack < 10) return;
+            if (stack < 10 || _owner.bufListDetail.HasBuf<BattleUnitBuf_CardCostM1_V21341>()) return;
             _owner.bufListDetail.AddBuf(new BattleUnitBuf_CardCostM1_V21341());
         }
         public override void BeforeTakeDamage(BattleUnitModel attacker, int dmg)
@@ -25,6 +25,7 @@ namespace Purple_V21341.Buffs
         {
             stack += addedStack;
             stack = Mathf.Clamp(stack, 0, 10);
+            if(stack > 9 && !_owner.bufListDetail.HasBuf<BattleUnitBuf_CardCostM1_V21341>()) _owner.bufListDetail.AddBuf(new BattleUnitBuf_CardCostM1_V21341());
         }
 
         public override void OnWinParrying(BattleDiceBehavior behavior)

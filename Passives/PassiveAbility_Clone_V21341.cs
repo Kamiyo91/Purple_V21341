@@ -10,6 +10,11 @@ namespace Purple_V21341.Passives
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>()) owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
         }
 
+        public override int SpeedDiceNumAdder()
+        {
+            return owner.faction == Faction.Enemy ? 2 : base.SpeedDiceNumAdder();
+        }
+
         public override int GetDamageReduction(BattleDiceBehavior behavior)
         {
             switch (behavior.card.card.XmlData.Spec.Ranged)
