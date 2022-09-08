@@ -107,7 +107,10 @@ namespace Purple_V21341.Passives
             owner.bufListDetail.AddBufWithoutDuplication(new BattleUnitBuf_KamiyoImmortalUntilRoundEnd());
             owner.bufListDetail.AddBufWithoutDuplication(new BattleUnitBuf_CardCostM2_V21341());
         }
-
+        public override void OnStartBattle()
+        {
+            UnitUtil.RemoveImmortalBuff(owner);
+        }
         private void AddUnit()
         {
             if (BattleObjectManager.instance.GetList(owner.faction).Exists(x => x == _additionalUnit))
