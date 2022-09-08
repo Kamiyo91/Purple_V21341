@@ -35,11 +35,18 @@ namespace Purple_V21341
             ModParameters.LocalizePackageIdAndPath.Add(PurpleModParameters.PackageId, PurpleModParameters.Path);
             ModParameters.SpritePreviewChange.AddRange(new Dictionary<string, List<LorId>>
             {
-                { "WonderlandDefault_V21341", new List<LorId> { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 10000002) } },
+                {
+                    "WonderlandDefault_V21341",
+                    new List<LorId>
+                    {
+                        new LorId(PurpleModParameters.PackageId, 10000001),
+                        new LorId(PurpleModParameters.PackageId, 10000002)
+                    }
+                }
             });
             ModParameters.UntransferablePassives.AddRange(new List<LorId>
             {
-                new LorId(PurpleModParameters.PackageId, 5),new LorId(PurpleModParameters.PackageId, 4)
+                new LorId(PurpleModParameters.PackageId, 5), new LorId(PurpleModParameters.PackageId, 4)
             });
             ModParameters.PersonalCardList.AddRange(new List<LorId>
             {

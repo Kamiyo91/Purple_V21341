@@ -5,6 +5,7 @@ namespace Purple_V21341.Passives
     public class PassiveAbility_PoisonedBlade_V21341 : PassiveAbilityBase
     {
         public int Multiplier;
+
         public override void OnRoundStartAfter()
         {
             Multiplier = 1;

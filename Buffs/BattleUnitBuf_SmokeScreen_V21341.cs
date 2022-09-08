@@ -5,14 +5,17 @@ namespace Purple_V21341.Buffs
     public class BattleUnitBuf_SmokeScreen_V21341 : BattleUnitBuf
     {
         private GameObject _aura;
+
         public override bool IsTargetable()
         {
             return false;
         }
+
         public override bool DirectAttack()
         {
             return true;
         }
+
         public override void Init(BattleUnitModel owner)
         {
             base.Init(owner);
@@ -26,6 +29,7 @@ namespace Purple_V21341.Buffs
                 Object.Destroy(_aura.gameObject);
                 _aura = null;
             }
+
             _owner.bufListDetail.RemoveBuf(this);
         }
 
@@ -41,7 +45,8 @@ namespace Purple_V21341.Buffs
             _aura.transform.localScale = Vector3.one;
             var particleSystems = _aura.gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach (var particleSystem in particleSystems)
-                if (!particleSystem.gameObject.name.Equals("Smoke")) particleSystem.gameObject.SetActive(false);
+                if (!particleSystem.gameObject.name.Equals("Smoke"))
+                    particleSystem.gameObject.SetActive(false);
         }
     }
 }

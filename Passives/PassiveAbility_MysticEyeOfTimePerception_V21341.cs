@@ -9,13 +9,16 @@ namespace Purple_V21341.Passives
         {
             owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 2, owner);
         }
+
         public override void OnRoundEnd()
         {
             owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 2, owner);
         }
+
         public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
-            if (behavior.Detail == BehaviourDetail.Evasion || owner.passiveDetail.HasPassive<PassiveAbility_Clone_V21341>())
+            if (behavior.Detail == BehaviourDetail.Evasion ||
+                owner.passiveDetail.HasPassive<PassiveAbility_Clone_V21341>())
                 behavior.ApplyDiceStatBonus(
                     new DiceStatBonus
                     {
@@ -23,6 +26,7 @@ namespace Purple_V21341.Passives
                         max = 2
                     });
         }
+
         public override void OnStartTargetedOneSide(BattlePlayingCardDataInUnitModel attackerCard)
         {
             UnitUtil.SetPassiveCombatLog(this, owner);

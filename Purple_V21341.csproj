@@ -95,6 +95,7 @@
     <Compile Include="Cards\DiceCardSelfAbility_SummonClone_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_TimePerception_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
+    <Compile Include="PassiveAbility_LoneFixer_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Time Recession_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Wonderland_V21341.cs" />

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using KamiyoStaticUtil.Utils;
+﻿using KamiyoStaticUtil.Utils;
 using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
@@ -10,10 +9,12 @@ namespace Purple_V21341.Passives
         private BattleUnitBuf_SmokeBomb_V21341 _buff;
         public BattleUnitModel Clone;
         public bool SummonUsed;
+
         public override void OnWaveStart()
         {
             _buff = new BattleUnitBuf_SmokeBomb_V21341();
-            if (!(owner.bufListDetail.GetActivatedBufList().Find(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341 buff))
+            if (!(owner.bufListDetail.GetActivatedBufList().Find(x => x is BattleUnitBuf_SmokeBomb_V21341) is
+                    BattleUnitBuf_SmokeBomb_V21341 buff))
                 owner.bufListDetail.AddBuf(_buff);
             else _buff = buff;
             owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 1));
@@ -32,6 +33,7 @@ namespace Purple_V21341.Passives
                 _buff = new BattleUnitBuf_SmokeBomb_V21341();
                 owner.bufListDetail.AddBuf(_buff);
             }
+
             _buff.OnAddBuf(1);
             if (!SummonUsed) return;
             SummonUsed = false;

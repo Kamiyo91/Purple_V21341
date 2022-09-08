@@ -5,7 +5,7 @@
         public override void OnUseCard()
         {
             owner.cardSlotDetail.RecoverPlayPoint(1);
-            owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke,2,owner);
+            owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 2, owner);
         }
     }
 }

@@ -5,7 +5,8 @@
         public override void OnUseCard()
         {
             owner.allyCardDetail.DrawCards(1);
-            if (!(owner.bufListDetail.GetActivatedBuf(KeywordBuf.Smoke) is BattleUnitBuf_smoke smoke) || smoke.stack < 3) return;
+            if (!(owner.bufListDetail.GetActivatedBuf(KeywordBuf.Smoke) is BattleUnitBuf_smoke smoke) ||
+                smoke.stack < 3) return;
             smoke.UseStack(3);
             card.ApplyDiceStatBonus(DiceMatch.AllDice, new DiceStatBonus { power = 1 });
             owner.cardSlotDetail.RecoverPlayPoint(1);

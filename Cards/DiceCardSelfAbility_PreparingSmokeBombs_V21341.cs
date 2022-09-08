@@ -10,6 +10,7 @@ namespace Purple_V21341.Cards
             return owner.bufListDetail.GetActivatedBufList()
                 .FirstOrDefault(x => x.bufType == KeywordBuf.Smoke)?.stack > 2;
         }
+
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
         {
             Activate(unit);
@@ -18,7 +19,8 @@ namespace Purple_V21341.Cards
 
         private static void Activate(BattleUnitModel unit)
         {
-            if (!(unit.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341 buff)) return;
+            if (!(unit.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is
+                    BattleUnitBuf_SmokeBomb_V21341 buff)) return;
             if (!(unit.bufListDetail.GetActivatedBuf(KeywordBuf.Smoke) is BattleUnitBuf_smoke smoke)) return;
             smoke.UseStack(3);
             buff.OnAddBuf(1);

@@ -27,7 +27,8 @@ namespace Purple_V21341.Cards
                     .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341
                 buff)
                 buff.OnAddBuf(-5);
-            var cloneUnit = SummonSpecialUnit(Singleton<StageController>.Instance.GetCurrentStageFloorModel(), 10000002, new LorId(PurpleModParameters.PackageId, 2), unit.emotionDetail.EmotionLevel);
+            var cloneUnit = SummonSpecialUnit(Singleton<StageController>.Instance.GetCurrentStageFloorModel(), 10000002,
+                new LorId(PurpleModParameters.PackageId, 2), unit.emotionDetail.EmotionLevel);
             UnitUtil.RefreshCombatUI();
             if (!(unit.passiveDetail.PassiveList.FirstOrDefault(x => x is PassiveAbility_Wonderland_V21341) is
                     PassiveAbility_Wonderland_V21341 passive)) return;
@@ -39,7 +40,9 @@ namespace Purple_V21341.Cards
         {
             return true;
         }
-        public static BattleUnitModel SummonSpecialUnit(StageLibraryFloorModel floor, int unitId, LorId unitNameId, int emotionLevel)
+
+        public static BattleUnitModel SummonSpecialUnit(StageLibraryFloorModel floor, int unitId, LorId unitNameId,
+            int emotionLevel)
         {
             return UnitUtil.AddNewUnitPlayerSideCustomDataOnPlay(floor, new UnitModel
             {
@@ -48,8 +51,8 @@ namespace Purple_V21341.Cards
                     .FirstOrDefault(x => x.Key.Equals(unitNameId)).Value,
                 EmotionLevel = emotionLevel,
                 Pos = BattleObjectManager.instance.GetList(Faction.Player).Count,
-                Sephirah = floor.Sephirah,
-            }, PurpleModParameters.PackageId,true);
+                Sephirah = floor.Sephirah
+            }, PurpleModParameters.PackageId, true);
         }
     }
 }

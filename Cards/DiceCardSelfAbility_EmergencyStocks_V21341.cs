@@ -13,7 +13,8 @@ namespace Purple_V21341.Cards
 
         private static void Activate(BattleUnitModel unit)
         {
-            if (!(unit.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341 buff)) return;
+            if (!(unit.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is
+                    BattleUnitBuf_SmokeBomb_V21341 buff)) return;
             unit.cardSlotDetail.RecoverPlayPoint(unit.MaxPlayPoint);
             unit.allyCardDetail.DrawCards(2);
             unit.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 10, unit);

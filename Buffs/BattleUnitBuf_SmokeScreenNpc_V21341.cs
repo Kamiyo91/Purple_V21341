@@ -5,6 +5,7 @@ namespace Purple_V21341.Buffs
     public class BattleUnitBuf_SmokeScreenNpc_V21341 : BattleUnitBuf
     {
         private GameObject _aura;
+
         public override bool IsTargetable()
         {
             return false;
@@ -27,6 +28,7 @@ namespace Purple_V21341.Buffs
             Object.Destroy(_aura.gameObject);
             _aura = null;
         }
+
         public void CreateSmokeScreen()
         {
             var original = Resources.Load("Prefabs/Battle/DiceAttackEffects/new/fx/mon/elilin/FX_Mon_Elilin2_Aura");
@@ -39,7 +41,8 @@ namespace Purple_V21341.Buffs
             _aura.transform.localScale = Vector3.one;
             var particleSystems = _aura.gameObject.GetComponentsInChildren<ParticleSystem>();
             foreach (var particleSystem in particleSystems)
-                if (!particleSystem.gameObject.name.Equals("Smoke")) particleSystem.gameObject.SetActive(false);
+                if (!particleSystem.gameObject.name.Equals("Smoke"))
+                    particleSystem.gameObject.SetActive(false);
         }
     }
 }

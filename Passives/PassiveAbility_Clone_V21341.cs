@@ -1,5 +1,6 @@
 ﻿using KamiyoStaticUtil.Utils;
 using LOR_DiceSystem;
+using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
 namespace Purple_V21341.Passives
@@ -8,7 +9,9 @@ namespace Purple_V21341.Passives
     {
         public override void OnWaveStart()
         {
-            if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>()) owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
+            if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>())
+                owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
+            UnitUtil.ChangeLoneFixerPassive(owner.faction, new LorId(PurpleModParameters.PackageId, 7));
         }
 
         public override int SpeedDiceNumAdder()
