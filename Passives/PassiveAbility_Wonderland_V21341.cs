@@ -25,6 +25,8 @@ namespace Purple_V21341.Passives
             owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 2));
             owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 3));
             owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 4));
+            owner.personalEgoDetail.RemoveCard(new LorId(PurpleModParameters.PackageId, 11));
+            owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 11));
             owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 2));
             owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 3));
             owner.personalEgoDetail.AddCard(new LorId(PurpleModParameters.PackageId, 4));

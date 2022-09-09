@@ -86,6 +86,7 @@
     <Compile Include="Buffs\BattleUnitBuf_SmokeScreenNpc_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeScreen_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_ExhaleSmoke_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_SmokeBomb_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_Stab_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_EmergencyStocks_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_PoisonedSword_V21341.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Cards\DiceCardSelfAbility_SmokeScreen_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_SummonClone_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_TimePerception_V21341.cs" />
+    <Compile Include="Dice\DiceCardAbility_ClashWin1Smoke_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
     <Compile Include="PassiveAbility_LoneFixer_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
@@ -110,5 +112,6 @@
   <ItemGroup>
     <None Include="Util\CustomMapUtility\README.md" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

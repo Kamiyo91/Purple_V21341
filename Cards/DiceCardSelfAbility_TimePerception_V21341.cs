@@ -11,6 +11,7 @@ namespace Purple_V21341.Cards
         {
             _count = 0;
             owner.allyCardDetail.DrawCards(1);
+            owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 1, owner);
         }
 
         public override void OnWinParryingDef()

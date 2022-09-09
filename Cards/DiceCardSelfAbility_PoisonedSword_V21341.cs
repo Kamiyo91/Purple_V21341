@@ -7,6 +7,11 @@ namespace Purple_V21341.Cards
     {
         private PassiveAbility_PoisonedBlade_V21341 _passive;
 
+        public override bool OnChooseCard(BattleUnitModel owner)
+        {
+            return owner.emotionDetail.EmotionLevel > 2;
+        }
+
         public override void OnStartBattle()
         {
             owner.allyCardDetail.DrawCards(1);
