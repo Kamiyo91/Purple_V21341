@@ -21,7 +21,7 @@ namespace Purple_V21341.Passives
 
         public override void OnWaveStart()
         {
-            _count = 2;
+            _count = 3;
             PhaseChanged = owner.hp < MechHp;
             _dialog = PhaseChanged;
             _buff = new BattleUnitBuf_SmokeBomb_V21341();

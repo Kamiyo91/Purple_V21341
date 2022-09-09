@@ -12,7 +12,7 @@ namespace Purple_V21341.Passives
 
         public override void OnRoundEnd()
         {
-            owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 2, owner);
+            owner.bufListDetail.AddKeywordBufByEtc(KeywordBuf.Quickness, 2, owner);
         }
 
         public override void BeforeRollDice(BattleDiceBehavior behavior)

@@ -4,7 +4,7 @@
     {
         public override void OnWinParrying()
         {
-            card.target?.bufListDetail.AddKeywordBufByCard(KeywordBuf.Smoke, 1, owner);
+            card.target?.bufListDetail.AddKeywordBufThisRoundByCard(KeywordBuf.Smoke, 1, owner);
         }
     }
 }

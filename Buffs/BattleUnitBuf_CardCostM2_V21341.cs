@@ -4,7 +4,7 @@
     {
         public override int GetCardCostAdder(BattleDiceCardModel card)
         {
-            return -2;
+            return -1;
         }
     }
 }
