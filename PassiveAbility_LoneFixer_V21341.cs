@@ -6,6 +6,11 @@ namespace Purple_V21341
     {
         public override void OnRoundEnd()
         {
+            AddBuff();
+        }
+
+        public void AddBuff()
+        {
             if (UnitUtil.SupportCharCheck(owner) == 1)
                 owner.bufListDetail.AddKeywordBufByEtc(KeywordBuf.Strength, 3);
         }
