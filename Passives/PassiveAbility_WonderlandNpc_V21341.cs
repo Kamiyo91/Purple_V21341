@@ -35,7 +35,7 @@ namespace Purple_V21341.Passives
         {
             if (!PhaseChanged) return 2;
             if (_additionalUnit == null || _additionalUnit.IsDead()) return 4;
-            return 2;
+            return owner.emotionDetail.EmotionLevel > 3 ? 0 : 1;
         }
 
         public override void OnRoundEndTheLast()
@@ -67,7 +67,7 @@ namespace Purple_V21341.Passives
                 }
             }
 
-            if (_count < 3) return;
+            if (_count < 4) return;
             _count = 0;
             AddUnit();
         }
