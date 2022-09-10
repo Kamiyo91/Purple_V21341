@@ -54,6 +54,10 @@ namespace Purple_V21341
                 new LorId(PurpleModParameters.PackageId, 3), new LorId(PurpleModParameters.PackageId, 4),
                 new LorId(PurpleModParameters.PackageId, 11)
             });
+            ModParameters.EgoPersonalCardList.AddRange(new List<LorId>
+            {
+                new LorId(PurpleModParameters.PackageId, 12)
+            });
             ModParameters.DynamicNames.AddRange(new Dictionary<LorId, LorId>
             {
                 { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 1) },

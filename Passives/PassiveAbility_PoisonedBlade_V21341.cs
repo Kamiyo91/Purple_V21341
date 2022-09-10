@@ -5,8 +5,9 @@ namespace Purple_V21341.Passives
 {
     public class PassiveAbility_PoisonedBlade_V21341 : PassiveAbilityBase
     {
-        public int Multiplier;
         private Random _random;
+        public int Multiplier;
+
         public override void Init(BattleUnitModel self)
         {
             base.Init(self);

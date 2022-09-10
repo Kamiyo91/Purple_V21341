@@ -95,8 +95,13 @@
     <Compile Include="Cards\DiceCardSelfAbility_SmokeScreen_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_SummonClone_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_TimePerception_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_WonderlandMassAttackNpc_V21341.cs" />
+    <Compile Include="Cards\DiceCardSelfAbility_WonderlandMassAttack_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_ClashWin1Smoke_V21341.cs" />
+    <Compile Include="Dice\DiceCardAbility_Inflict2PurplePoison_V21341.cs" />
+    <Compile Include="Dice\DiceCardAbility_Inflict1PurplePoison_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
+    <Compile Include="MapUtil.cs" />
     <Compile Include="PassiveAbility_LoneFixer_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Time Recession_V21341.cs" />

@@ -13,15 +13,20 @@ namespace Purple_V21341.Passives
     public class PassiveAbility_WonderlandNpc_V21341 : PassiveAbilityBase
     {
         public const int MechHp = 412;
+        public bool PhaseChanged;
         private BattleUnitModel _additionalUnit;
         private BattleUnitBuf_SmokeBomb_V21341 _buff;
         private int _count;
         private bool _dialog;
-        public bool PhaseChanged;
+        private int _massCount;
+        private bool _oneTurnCard;
+        private bool _mapUsed;
 
         public override void OnWaveStart()
         {
             _count = 3;
+            _massCount = 4;
+            _mapUsed = false;
             PhaseChanged = owner.hp < MechHp;
             _dialog = PhaseChanged;
             _buff = new BattleUnitBuf_SmokeBomb_V21341();
@@ -40,6 +45,9 @@ namespace Purple_V21341.Passives
 
         public override void OnRoundEndTheLast()
         {
+            RaiseCounter();
+            _oneTurnCard = false;
+            ExhaustEgoAttackCards();
             if (!PhaseChanged) return;
             if (!_dialog)
             {
@@ -112,7 +120,10 @@ namespace Purple_V21341.Passives
         {
             UnitUtil.RemoveImmortalBuff(owner);
         }
-
+        public override void OnRoundEndTheLast_ignoreDead()
+        {
+            ReturnFromEgoMap();
+        }
         private void AddUnit()
         {
             if (BattleObjectManager.instance.GetList(owner.faction).Exists(x => x == _additionalUnit))
@@ -127,6 +138,62 @@ namespace Purple_V21341.Passives
                 OnWaveStart = true
             }, PurpleModParameters.PackageId);
             UnitUtil.RefreshCombatUI();
+        }
+        public override BattleDiceCardModel OnSelectCardAuto(BattleDiceCardModel origin, int currentDiceSlotIdx)
+        {
+            OnSelectCardPutMassAttack(ref origin);
+            return base.OnSelectCardAuto(origin, currentDiceSlotIdx);
+        }
+        private void OnSelectCardPutMassAttack(ref BattleDiceCardModel origin)
+        {
+            if (!PhaseChanged || _massCount < 4 || _oneTurnCard)
+                return;
+            origin = BattleDiceCardModel.CreatePlayingCard(
+                ItemXmlDataList.instance.GetCardItem(new LorId(PurpleModParameters.PackageId,13)));
+            _oneTurnCard = true;
+        }
+        public override void OnUseCard(BattlePlayingCardDataInUnitModel curCard)
+        {
+            OnUseCardResetCount(curCard);
+            ChangeToEgoMap(curCard.card.GetID());
+        }
+        private void RaiseCounter()
+        {
+            if (PhaseChanged && _massCount < 4) _massCount++;
+        }
+        private void ExhaustEgoAttackCards()
+        {
+            var cards = owner.allyCardDetail.GetAllDeck().Where(x => x.GetID() == new LorId(PurpleModParameters.PackageId, 13));
+            foreach (var card in cards) owner.allyCardDetail.ExhaustACardAnywhere(card);
+        }
+        private void OnUseCardResetCount(BattlePlayingCardDataInUnitModel curCard)
+        {
+            if (new LorId(PurpleModParameters.PackageId, 13) != curCard.card.GetID()) return;
+            _massCount = 0;
+            owner.allyCardDetail.ExhaustACardAnywhere(curCard.card);
+        }
+        public virtual void ChangeToEgoMap(LorId cardId)
+        {
+            if (cardId != new LorId(PurpleModParameters.PackageId, 13) ||
+                SingletonBehavior<BattleSceneRoot>.Instance.currentMapObject.isEgo) return;
+            _mapUsed = true;
+            MapUtil.ChangeMap(new MapModel
+            {
+                Stage = "PurplePoison_V21341",
+                StageIds = new List<LorId> { new LorId(PurpleModParameters.PackageId, 1) },
+                OneTurnEgo = true,
+                IsPlayer = true,
+                Component = typeof(Wonderland_V21341MapManager),
+                Bgy = 0.25f,
+                Fy = 407.5f / 1080f
+            });
+        }
+        private void ReturnFromEgoMap()
+        {
+            if (!_mapUsed) return;
+            _mapUsed = false;
+            MapUtil.ReturnFromEgoMap("PurplePoison_V21341",
+                new List<LorId> { new LorId(PurpleModParameters.PackageId, 1) });
         }
     }
 }

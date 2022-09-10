@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using KamiyoStaticUtil.Utils;
+using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
 namespace Purple_V21341.Cards
@@ -10,7 +11,10 @@ namespace Purple_V21341.Cards
         {
             return owner.bufListDetail.GetActivatedBufList()
                        .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > 4 &&
-                   BattleObjectManager.instance.GetAliveList(owner.faction).Count > 1;
+                   BattleObjectManager.instance.GetAliveList(owner.faction).Count > 1 &&
+                   !owner.cardSlotDetail.cardAry.Exists(x =>
+                       x?.card?.GetID() == new LorId(PurpleModParameters.PackageId, 12));
+            ;
         }
 
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)

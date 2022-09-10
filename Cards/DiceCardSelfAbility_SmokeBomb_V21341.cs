@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
 namespace Purple_V21341.Cards
@@ -8,7 +9,10 @@ namespace Purple_V21341.Cards
         public override bool OnChooseCard(BattleUnitModel owner)
         {
             return owner.bufListDetail.GetActivatedBufList()
-                .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > 0;
+                       .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341)?.stack > 0 &&
+                   !owner.cardSlotDetail.cardAry.Exists(x =>
+                       x?.card?.GetID() == new LorId(PurpleModParameters.PackageId, 12));
+            ;
         }
 
         public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
