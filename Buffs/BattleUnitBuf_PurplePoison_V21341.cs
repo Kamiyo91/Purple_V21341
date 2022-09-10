@@ -10,13 +10,13 @@ namespace Purple_V21341.Buffs
         public override void OnRoundStartAfter()
         {
             _owner.TakeDamage(stack * _owner.MaxHp / 100);
-            AddStacks(-1);
+            OnAddBuf(-1);
             if (stack == 0) _owner.bufListDetail.RemoveBuf(this);
         }
 
-        public void AddStacks(int stacks)
+        public override void OnAddBuf(int addedStack)
         {
-            stack += stacks;
+            stack += addedStack;
             stack = Mathf.Clamp(stack, 0, 25);
         }
     }

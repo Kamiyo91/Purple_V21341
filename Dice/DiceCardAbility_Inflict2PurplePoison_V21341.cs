@@ -11,7 +11,7 @@ namespace Purple_V21341.Dice
                     .FirstOrDefault(x => x is BattleUnitBuf_PurplePoison_V21341) is BattleUnitBuf_PurplePoison_V21341
                 buff)
             {
-                buff.AddStacks(2);
+                buff.OnAddBuf(2);
             }
             else
             {

@@ -18,7 +18,7 @@ namespace Purple_V21341.Cards
         {
             var buff = owner.bufListDetail.GetActivatedBufList()
                 .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) as BattleUnitBuf_SmokeBomb_V21341;
-            if (buff != null && buff.stack > 9)
+            if (buff?.stack > 9)
                 card.ApplyDiceAbility(DiceMatch.AllDice, new DiceCardAbility_Inflict2PurplePoison_V21341());
             else card.ApplyDiceAbility(DiceMatch.AllDice, new DiceCardAbility_Inflict1PurplePoison_V21341());
             buff?.OnAddBuf(-10);
