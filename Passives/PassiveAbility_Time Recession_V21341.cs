@@ -14,7 +14,6 @@ namespace Purple_V21341.Passives
 
         public override void OnStartBattle()
         {
-            _counterReload = false;
             _buff = owner.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341);
             UnitUtil.ReadyCounterCard(owner, 10, PurpleModParameters.PackageId);
             var aliveList = BattleObjectManager.instance.GetAliveList(UnitUtil.ReturnOtherSideFaction(owner.faction));
@@ -36,28 +35,28 @@ namespace Purple_V21341.Passives
 
         public override void OnLoseParrying(BattleDiceBehavior behavior)
         {
-            if (!_counterReload)
-                _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
+            if (_buff == null || _buff.stack < 10) _counterReload = false;
+            else _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
         }
 
         public override void OnDrawParrying(BattleDiceBehavior behavior)
         {
-            if (!_counterReload)
-                _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
+            if (_buff == null || _buff.stack < 10) _counterReload = false;
+            else _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
         }
 
         public override void OnWinParrying(BattleDiceBehavior behavior)
         {
-            if (!_counterReload)
-                _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
+            if (_buff == null || _buff.stack < 10) _counterReload = false;
+            else _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
         }
 
         public override void OnEndBattle(BattlePlayingCardDataInUnitModel curCard)
         {
-            if (!_counterReload || _buff == null || _buff.stack < 10) return;
+            if (!_counterReload) return;
             _counterReload = false;
             UnitUtil.SetPassiveCombatLog(this, owner);
-            UnitUtil.ReadyCounterCard(owner, 8, PurpleModParameters.PackageId);
+            UnitUtil.ReadyCounterCard(owner, 10, PurpleModParameters.PackageId);
         }
     }
 }
