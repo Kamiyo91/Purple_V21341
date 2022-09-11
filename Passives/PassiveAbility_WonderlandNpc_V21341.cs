@@ -13,14 +13,14 @@ namespace Purple_V21341.Passives
     public class PassiveAbility_WonderlandNpc_V21341 : PassiveAbilityBase
     {
         public const int MechHp = 412;
-        public bool PhaseChanged;
         private BattleUnitModel _additionalUnit;
         private BattleUnitBuf_SmokeBomb_V21341 _buff;
         private int _count;
         private bool _dialog;
+        private bool _mapUsed;
         private int _massCount;
         private bool _oneTurnCard;
-        private bool _mapUsed;
+        public bool PhaseChanged;
 
         public override void OnWaveStart()
         {
@@ -120,10 +120,12 @@ namespace Purple_V21341.Passives
         {
             UnitUtil.RemoveImmortalBuff(owner);
         }
+
         public override void OnRoundEndTheLast_ignoreDead()
         {
             ReturnFromEgoMap();
         }
+
         private void AddUnit()
         {
             if (BattleObjectManager.instance.GetList(owner.faction).Exists(x => x == _additionalUnit))
@@ -139,39 +141,47 @@ namespace Purple_V21341.Passives
             }, PurpleModParameters.PackageId);
             UnitUtil.RefreshCombatUI();
         }
+
         public override BattleDiceCardModel OnSelectCardAuto(BattleDiceCardModel origin, int currentDiceSlotIdx)
         {
             OnSelectCardPutMassAttack(ref origin);
             return base.OnSelectCardAuto(origin, currentDiceSlotIdx);
         }
+
         private void OnSelectCardPutMassAttack(ref BattleDiceCardModel origin)
         {
             if (!PhaseChanged || _massCount < 4 || _oneTurnCard)
                 return;
             origin = BattleDiceCardModel.CreatePlayingCard(
-                ItemXmlDataList.instance.GetCardItem(new LorId(PurpleModParameters.PackageId,13)));
+                ItemXmlDataList.instance.GetCardItem(new LorId(PurpleModParameters.PackageId, 13)));
             _oneTurnCard = true;
         }
+
         public override void OnUseCard(BattlePlayingCardDataInUnitModel curCard)
         {
             OnUseCardResetCount(curCard);
             ChangeToEgoMap(curCard.card.GetID());
         }
+
         private void RaiseCounter()
         {
             if (PhaseChanged && _massCount < 4) _massCount++;
         }
+
         private void ExhaustEgoAttackCards()
         {
-            var cards = owner.allyCardDetail.GetAllDeck().Where(x => x.GetID() == new LorId(PurpleModParameters.PackageId, 13));
+            var cards = owner.allyCardDetail.GetAllDeck()
+                .Where(x => x.GetID() == new LorId(PurpleModParameters.PackageId, 13));
             foreach (var card in cards) owner.allyCardDetail.ExhaustACardAnywhere(card);
         }
+
         private void OnUseCardResetCount(BattlePlayingCardDataInUnitModel curCard)
         {
             if (new LorId(PurpleModParameters.PackageId, 13) != curCard.card.GetID()) return;
             _massCount = 0;
             owner.allyCardDetail.ExhaustACardAnywhere(curCard.card);
         }
+
         public virtual void ChangeToEgoMap(LorId cardId)
         {
             if (cardId != new LorId(PurpleModParameters.PackageId, 13) ||
@@ -188,6 +198,7 @@ namespace Purple_V21341.Passives
                 Fy = 407.5f / 1080f
             });
         }
+
         private void ReturnFromEgoMap()
         {
             if (!_mapUsed) return;

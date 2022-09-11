@@ -7,6 +7,7 @@ namespace Purple_V21341.Cards
     public class DiceCardSelfAbility_WonderlandMassAttackNpc_V21341 : DiceCardSelfAbilityBase
     {
         private bool _motionChanged;
+
         public override void OnUseCard()
         {
             var buff = owner.bufListDetail.GetActivatedBufList()

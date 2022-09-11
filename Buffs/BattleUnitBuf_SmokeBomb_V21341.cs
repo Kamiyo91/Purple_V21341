@@ -18,6 +18,7 @@ namespace Purple_V21341.Buffs
 
         public override void BeforeTakeDamage(BattleUnitModel attacker, int dmg)
         {
+            if (dmg == 0) return;
             HitCount++;
             if (HitCount < 3) return;
             HitCount = 0;

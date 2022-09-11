@@ -100,6 +100,7 @@
     <Compile Include="Dice\DiceCardAbility_ClashWin1Smoke_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_Inflict2PurplePoison_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_Inflict1PurplePoison_V21341.cs" />
+    <Compile Include="Dice\DiceCardAbility_WonderlandEvasion_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
     <Compile Include="MapUtil.cs" />
     <Compile Include="PassiveAbility_LoneFixer_V21341.cs" />

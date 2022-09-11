@@ -2,13 +2,20 @@
 using KamiyoStaticUtil.Utils;
 using LOR_DiceSystem;
 using Purple_V21341.BLL;
+using Purple_V21341.Buffs;
+using Purple_V21341.Dice;
 
 namespace Purple_V21341.Passives
 {
     public class PassiveAbility_Time_Recession_V21341 : PassiveAbilityBase
     {
+        private BattleUnitBuf _buff;
+        private bool _counterReload;
+
         public override void OnStartBattle()
         {
+            _counterReload = false;
+            _buff = owner.bufListDetail.GetActivatedBufList().FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341);
             UnitUtil.ReadyCounterCard(owner, 10, PurpleModParameters.PackageId);
             var aliveList = BattleObjectManager.instance.GetAliveList(UnitUtil.ReturnOtherSideFaction(owner.faction));
             if (!aliveList.Any()) return;
@@ -25,6 +32,32 @@ namespace Purple_V21341.Passives
                 target = target
             };
             Singleton<StageController>.Instance.AddAllCardListInBattle(card, target);
+        }
+
+        public override void OnLoseParrying(BattleDiceBehavior behavior)
+        {
+            if (!_counterReload)
+                _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
+        }
+
+        public override void OnDrawParrying(BattleDiceBehavior behavior)
+        {
+            if (!_counterReload)
+                _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
+        }
+
+        public override void OnWinParrying(BattleDiceBehavior behavior)
+        {
+            if (!_counterReload)
+                _counterReload = behavior.abilityList.Exists(x => x is DiceCardAbility_WonderlandEvasion_V21341);
+        }
+
+        public override void OnEndBattle(BattlePlayingCardDataInUnitModel curCard)
+        {
+            if (!_counterReload || _buff == null || _buff.stack < 10) return;
+            _counterReload = false;
+            UnitUtil.SetPassiveCombatLog(this, owner);
+            UnitUtil.ReadyCounterCard(owner, 8, PurpleModParameters.PackageId);
         }
     }
 }
