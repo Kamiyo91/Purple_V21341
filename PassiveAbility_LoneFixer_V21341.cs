@@ -1,18 +1,8 @@
-﻿using KamiyoStaticUtil.Utils;
+﻿using BigDLL4221.Passives;
 
 namespace Purple_V21341
 {
-    public class PassiveAbility_LoneFixer_V21341 : PassiveAbilityBase
+    public class PassiveAbility_LoneFixer_V21341 : PassiveAbility_LoneFixer_DLL4221
     {
-        public override void OnRoundEnd()
-        {
-            AddBuff();
-        }
-
-        public void AddBuff()
-        {
-            if (UnitUtil.SupportCharCheck(owner) == 1)
-                owner.bufListDetail.AddKeywordBufByEtc(KeywordBuf.Strength, 3);
-        }
     }
 }

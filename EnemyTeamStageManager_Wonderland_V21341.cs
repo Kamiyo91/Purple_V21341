@@ -1,28 +1,16 @@
-﻿using System.Linq;
-using CustomMapUtility;
-using Purple_V21341.Passives;
+﻿using System.Collections.Generic;
+using BigDLL4221.Models;
+using BigDLL4221.StageManagers;
+using Purple_V21341.BLL;
 
 namespace Purple_V21341
 {
-    public class EnemyTeamStageManager_Wonderland_V21341 : EnemyTeamStageManager
+    public class EnemyTeamStageManager_Wonderland_V21341 : EnemyTeamStageManager_BaseWithCMU_DLL4221
     {
-        private PassiveAbility_WonderlandNpc_V21341 _mainPassive;
-
         public override void OnWaveStart()
         {
-            _mainPassive = BattleObjectManager.instance.GetAliveList(Faction.Enemy).FirstOrDefault()?.passiveDetail
-                .PassiveList
-                .FirstOrDefault(x => x is PassiveAbility_WonderlandNpc_V21341) as PassiveAbility_WonderlandNpc_V21341;
-            CustomMapHandler.InitCustomMap<Wonderland_V21341MapManager>("PurplePoison_V21341", 0.5f, 0.25f);
-            if (_mainPassive == null || !_mainPassive.PhaseChanged) return;
-            CustomMapHandler.EnforceMap();
-            Singleton<StageController>.Instance.CheckMapChange();
-        }
-
-        public override void OnRoundStart()
-        {
-            if (_mainPassive == null || !_mainPassive.PhaseChanged) return;
-            CustomMapHandler.EnforceMap();
+            SetParameters(NpcMechUtilModels.PurplePoisonNpcUtil, new List<MapModel> { MapModels.PurplePoisonMap });
+            base.OnWaveStart();
         }
     }
 }

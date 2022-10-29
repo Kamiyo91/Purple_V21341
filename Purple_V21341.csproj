@@ -37,11 +37,8 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\StaticDLL\KamiyoStaticUtil\bin\Debug\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="KamiyoStaticBLL">
-      <HintPath>..\..\StaticDLL\KamiyoStaticBLL\bin\Debug\KamiyoStaticBLL.dll</HintPath>
-    </Reference>
-    <Reference Include="KamiyoStaticUtil">
-      <HintPath>..\..\StaticDLL\KamiyoStaticUtil\bin\Debug\KamiyoStaticUtil.dll</HintPath>
+    <Reference Include="BigDLL4221">
+      <HintPath>..\..\NewDLL\bin\Debug\BigDLL4221.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\..\CommonDLL\Mono.Cecil.dll</HintPath>
@@ -102,7 +99,6 @@
     <Compile Include="Dice\DiceCardAbility_Inflict1PurplePoison_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_WonderlandEvasion_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
-    <Compile Include="MapUtil.cs" />
     <Compile Include="PassiveAbility_LoneFixer_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Time Recession_V21341.cs" />
@@ -112,12 +108,7 @@
     <Compile Include="Passives\PassiveAbility_WonderlandNpc_V21341.cs" />
     <Compile Include="Purple_V21341_Init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitUtilExpansion.cs" />
-    <Compile Include="Util\CustomMapUtility\Assemblies\CustomMapUtility.cs" />
     <Compile Include="Wonderland_V21341MapManager.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Util\CustomMapUtility\README.md" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

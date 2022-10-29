@@ -1,4 +1,4 @@
-﻿using KamiyoStaticUtil.Utils;
+﻿using BigDLL4221.Utils;
 using LOR_DiceSystem;
 
 namespace Purple_V21341.Passives

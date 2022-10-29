@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using KamiyoStaticUtil.Utils;
+using BigDLL4221.Utils;
 using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
@@ -35,7 +35,7 @@ namespace Purple_V21341.Cards
 
             if (!unit.bufListDetail.HasBuf<BattleUnitBuf_SmokeScreen_V21341>())
                 unit.bufListDetail.AddBuf(new BattleUnitBuf_SmokeScreen_V21341());
-            UnitUtil.RemoveDiceTargetsWithoutBreak(unit);
+            UnitUtil.RemoveDiceTargets(unit, false);
         }
 
         public override bool IsTargetableSelf()

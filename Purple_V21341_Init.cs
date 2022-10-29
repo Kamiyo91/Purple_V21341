@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using KamiyoStaticBLL.Models;
-using KamiyoStaticUtil.Utils;
-using MonoMod.Utils;
+using BigDLL4221.Enum;
+using BigDLL4221.Models;
+using BigDLL4221.Utils;
+using LOR_DiceSystem;
 using Purple_V21341.BLL;
 
 namespace Purple_V21341
@@ -13,77 +14,87 @@ namespace Purple_V21341
     {
         public override void OnInitializeMod()
         {
-            InitParameters();
-            MapStaticUtil.GetArtWorks(new DirectoryInfo(PurpleModParameters.Path + "/ArtWork"));
-            UnitUtil.ChangeCardItem(ItemXmlDataList.instance, PurpleModParameters.PackageId);
-            UnitUtil.ChangePassiveItem(PurpleModParameters.PackageId);
-            SkinUtil.LoadBookSkinsExtra(PurpleModParameters.PackageId);
-            LocalizeUtil.AddLocalLocalize(PurpleModParameters.Path, PurpleModParameters.PackageId);
-            SkinUtil.PreLoadBufIcons();
+            OnInitParameters();
+            ArtUtil.GetArtWorks(new DirectoryInfo(PurpleModParameters.Path + "/ArtWork"));
+            CardUtil.ChangeCardItem(ItemXmlDataList.instance, PurpleModParameters.PackageId);
+            PassiveUtil.ChangePassiveItem(PurpleModParameters.PackageId);
+            LocalizeUtil.AddGlobalLocalize(PurpleModParameters.PackageId);
+            ArtUtil.PreLoadBufIcons();
             LocalizeUtil.RemoveError();
-            UnitUtil.InitKeywords(Assembly.GetExecutingAssembly());
-            UnitUtil.InitCustomEffects(new List<Assembly> { Assembly.GetExecutingAssembly() });
+            CardUtil.InitKeywordsList(new List<Assembly> { Assembly.GetExecutingAssembly() });
+            ArtUtil.InitCustomEffects(new List<Assembly> { Assembly.GetExecutingAssembly() });
+            CustomMapHandler.ModResources.CacheInit.InitCustomMapFiles(Assembly.GetExecutingAssembly());
         }
 
-        public void InitParameters()
+        private static void OnInitParameters()
         {
             ModParameters.PackageIds.Add(PurpleModParameters.PackageId);
-            PurpleModParameters.Path =
-                Path.GetDirectoryName(
-                    Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
-            ModParameters.Path.Add(PurpleModParameters.Path);
-            ModParameters.LocalizePackageIdAndPath.Add(PurpleModParameters.PackageId, PurpleModParameters.Path);
-            ModParameters.SpritePreviewChange.AddRange(new Dictionary<string, List<LorId>>
-            {
-                {
-                    "WonderlandDefault_V21341",
-                    new List<LorId>
-                    {
-                        new LorId(PurpleModParameters.PackageId, 10000001),
-                        new LorId(PurpleModParameters.PackageId, 10000002)
-                    }
-                }
-            });
-            ModParameters.UntransferablePassives.AddRange(new List<LorId>
-            {
-                new LorId(PurpleModParameters.PackageId, 5), new LorId(PurpleModParameters.PackageId, 4)
-            });
-            ModParameters.PersonalCardList.AddRange(new List<LorId>
-            {
-                new LorId(PurpleModParameters.PackageId, 1), new LorId(PurpleModParameters.PackageId, 2),
-                new LorId(PurpleModParameters.PackageId, 3), new LorId(PurpleModParameters.PackageId, 4),
-                new LorId(PurpleModParameters.PackageId, 11)
-            });
-            ModParameters.EgoPersonalCardList.AddRange(new List<LorId>
-            {
-                new LorId(PurpleModParameters.PackageId, 12)
-            });
-            ModParameters.DynamicNames.AddRange(new Dictionary<LorId, LorId>
-            {
-                { new LorId(PurpleModParameters.PackageId, 10000001), new LorId(PurpleModParameters.PackageId, 1) },
-                { new LorId(PurpleModParameters.PackageId, 10000002), new LorId(PurpleModParameters.PackageId, 2) }
-            });
+            PurpleModParameters.Path = Path.GetDirectoryName(
+                Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
+            ModParameters.Path.Add(PurpleModParameters.PackageId, PurpleModParameters.Path);
             ModParameters.DefaultKeyword.Add(PurpleModParameters.PackageId, "WonderlandModPage_V21341");
-            ModParameters.SupportCharPassive.AddRange(new List<LorId>
+            OnInitSprites();
+            OnInitKeypages();
+            OnInitCards();
+            OnInitPassives();
+            OnInitRewards();
+            OnInitCredenza();
+        }
+
+        private static void OnInitSprites()
+        {
+            ModParameters.SpriteOptions.Add(PurpleModParameters.PackageId, new List<SpriteOptions>
             {
-                new LorId(PurpleModParameters.PackageId, 4)
+                new SpriteOptions(SpriteEnum.Custom, 10000001, "WonderlandDefault_V21341"),
+                new SpriteOptions(SpriteEnum.Custom, 10000002, "WonderlandDefault_V21341")
             });
-            ModParameters.BannedEmotionSelectionUnit.AddRange(new List<LorId>
+        }
+
+        private static void OnInitRewards()
+        {
+            ModParameters.StartUpRewardOptions.Add(new RewardOptions(new Dictionary<LorId, int>
             {
-                new LorId(PurpleModParameters.PackageId, 10000002)
-            });
-            ModParameters.NoEgoFloorUnit.AddRange(new List<LorId>
+                { new LorId(PurpleModParameters.PackageId, 2), 0 }
+            }));
+        }
+
+        private static void OnInitCards()
+        {
+            ModParameters.CardOptions.Add(PurpleModParameters.PackageId, new List<CardOptions>
             {
-                new LorId(PurpleModParameters.PackageId, 10000002)
+                new CardOptions(1, CardOption.Personal),
+                new CardOptions(2, CardOption.Personal),
+                new CardOptions(3, CardOption.Personal),
+                new CardOptions(4, CardOption.Personal),
+                new CardOptions(11, CardOption.Personal),
+                new CardOptions(12, CardOption.EgoPersonal)
             });
-            ModParameters.BooksIds.AddRange(new List<LorId>
+        }
+
+        private static void OnInitPassives()
+        {
+            ModParameters.PassiveOptions.Add(PurpleModParameters.PackageId, new List<PassiveOptions>
             {
-                new LorId(PurpleModParameters.PackageId, 10000001)
+                new PassiveOptions(4, true, countForSoloAbilities: false, bannedEgoFloorCards: true,
+                    bannedEmotionCardSelection: true),
+                new PassiveOptions(5, true)
             });
-            ModParameters.BookList.AddRange(new List<LorId>
+        }
+
+        private static void OnInitKeypages()
+        {
+            ModParameters.KeypageOptions.Add(PurpleModParameters.PackageId, new List<KeypageOptions>
             {
-                new LorId(PurpleModParameters.PackageId, 2)
+                new KeypageOptions(10000001, bookCustomOptions: new BookCustomOptions(nameTextId: 1)),
+                new KeypageOptions(10000002, bookCustomOptions: new BookCustomOptions(nameTextId: 2))
             });
+        }
+
+        private static void OnInitCredenza()
+        {
+            ModParameters.CredenzaOptions.Add(PurpleModParameters.PackageId, new CredenzaOptions(
+                CredenzaEnum.ModifiedCredenza, new List<int> { 10000001 },
+                "PurplePoisonV21341.Mod", "", "PurplePoisonV21341.Mod"));
         }
     }
 }

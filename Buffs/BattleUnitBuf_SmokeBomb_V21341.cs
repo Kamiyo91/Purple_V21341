@@ -11,6 +11,7 @@ namespace Purple_V21341.Buffs
 
         public override void OnRoundStartAfter()
         {
+            if (_owner.faction == Faction.Enemy) OnAddBuf(1);
             HitCount = 0;
             if (stack < 10 || _owner.bufListDetail.HasBuf<BattleUnitBuf_CardCostM1_V21341>()) return;
             _owner.bufListDetail.AddBuf(new BattleUnitBuf_CardCostM1_V21341());
