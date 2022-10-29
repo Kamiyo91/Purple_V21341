@@ -25,6 +25,11 @@ namespace Purple_V21341.BLL
             summonedOnPlay: true, autoPlay: true);
     }
 
+    public static class SummonedUnitStatModels
+    {
+        public static SummonedUnitStatModel CloneStatModel = new SummonedUnitStatModel(true, reviveAfterScenesNpc: 2, damageOptions:
+            new DamageOptions(lessMassAttackDamage: 9999, lessMassAttackBreakDamage: 9999, lessMassAttackIndividualDamage: 9999, lessMassAttackIndividualBreakDamage: 9999));
+    }
     public static class NpcMechUtilModels
     {
         public static NpcMechUtilBase PurplePoisonNpcUtil = new NpcMechUtilBase(new NpcMechUtilBaseModel(

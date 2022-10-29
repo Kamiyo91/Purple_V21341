@@ -1,5 +1,6 @@
 ﻿using BigDLL4221.Models;
 using BigDLL4221.Passives;
+using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
 namespace Purple_V21341.Passives
@@ -10,9 +11,7 @@ namespace Purple_V21341.Passives
         {
             var passive = owner.passiveDetail.AddPassive(new PassiveAbility_CloneHidedPassive_V21341());
             passive.OnWaveStart();
-            SetParameters(new SummonedUnitStatModel(true, reviveAfterScenesNpc: 2, hpRecoveredWithRevive: owner.MaxHp,
-                removeFromUIAfterDeath: owner.faction == Faction.Player,damageOptions: 
-                new DamageOptions(lessMassAttackDamage:9999,lessMassAttackBreakDamage:9999,lessMassAttackIndividualDamage:9999,lessMassAttackIndividualBreakDamage:9999)));
+            SetParameters(SummonedUnitStatModels.CloneStatModel);
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>())
                 owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
         }
