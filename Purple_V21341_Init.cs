@@ -75,7 +75,7 @@ namespace Purple_V21341
         {
             ModParameters.PassiveOptions.Add(PurpleModParameters.PackageId, new List<PassiveOptions>
             {
-                new PassiveOptions(4, true, countForSoloAbilities: false, bannedEgoFloorCards: true,
+                new PassiveOptions(4, true, bannedEgoFloorCards: true,
                     bannedEmotionCardSelection: true),
                 new PassiveOptions(5, true)
             });

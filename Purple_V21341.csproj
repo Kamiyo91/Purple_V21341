@@ -80,7 +80,6 @@
     <Compile Include="Buffs\BattleUnitBuf_Clone_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_PurplePoison_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeBomb_V21341.cs" />
-    <Compile Include="Buffs\BattleUnitBuf_SmokeScreenNpc_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeScreen_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_ExhaleSmoke_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_SmokeBomb_V21341.cs" />
@@ -99,7 +98,7 @@
     <Compile Include="Dice\DiceCardAbility_Inflict1PurplePoison_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_WonderlandEvasion_V21341.cs" />
     <Compile Include="EnemyTeamStageManager_Wonderland_V21341.cs" />
-    <Compile Include="PassiveAbility_LoneFixer_V21341.cs" />
+    <Compile Include="Passives\PassiveAbility_CloneHidedPassive_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Clone_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Time Recession_V21341.cs" />
     <Compile Include="Passives\PassiveAbility_Wonderland_V21341.cs" />
