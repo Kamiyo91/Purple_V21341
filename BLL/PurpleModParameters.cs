@@ -64,14 +64,14 @@ namespace Purple_V21341.BLL
 
     public static class MechUtilModels
     {
-        public static MechUtilBase PurplePoisonPlayerUtil = new MechUtilBase(new MechUtilBaseModel(new EgoOptions(
-                egoMaps: new Dictionary<LorId, MapModel>
+        public static MechUtilBase PurplePoisonPlayerUtil = new MechUtilBase(new MechUtilBaseModel(new Dictionary<int, EgoOptions>{
+            {0,new EgoOptions(egoMaps: new Dictionary<LorId, MapModel>
                 {
                     {
                         new LorId(PurpleModParameters.PackageId, 12),
                         MapModels.PurplePoisonMap
                     }
-                }),
+                })}},
             permanentBuffList: new List<BattleUnitBuf>
             {
                 new BattleUnitBuf_SmokeBomb_V21341()
