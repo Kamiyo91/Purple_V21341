@@ -9,7 +9,8 @@ namespace Purple_V21341
     {
         public override void OnWaveStart()
         {
-            SetParameters(NpcMechUtilModels.PurplePoisonNpcUtil, new List<MapModel> { MapModels.PurplePoisonMap });
+            SetParameters(new NpcMechUtilModels().PurplePoisonNpcUtil,
+                new List<MapModel> { MapModels.PurplePoisonMap });
             base.OnWaveStart();
         }
     }

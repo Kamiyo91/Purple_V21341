@@ -1,5 +1,4 @@
-﻿using BigDLL4221.Models;
-using BigDLL4221.Passives;
+﻿using BigDLL4221.Passives;
 using Purple_V21341.BLL;
 using Purple_V21341.Buffs;
 
@@ -11,7 +10,7 @@ namespace Purple_V21341.Passives
         {
             var passive = owner.passiveDetail.AddPassive(new PassiveAbility_CloneHidedPassive_V21341());
             passive.OnWaveStart();
-            SetParameters(SummonedUnitStatModels.CloneStatModel);
+            SetParameters(new SummonedUnitStatModels().CloneStatModel);
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>())
                 owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
         }

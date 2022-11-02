@@ -25,14 +25,17 @@ namespace Purple_V21341.BLL
             summonedOnPlay: true, autoPlay: true);
     }
 
-    public static class SummonedUnitStatModels
+    public class SummonedUnitStatModels
     {
-        public static SummonedUnitStatModel CloneStatModel = new SummonedUnitStatModel(true, reviveAfterScenesNpc: 2, damageOptions:
-            new DamageOptions(lessMassAttackDamage: 9999, lessMassAttackBreakDamage: 9999, lessMassAttackIndividualDamage: 9999, lessMassAttackIndividualBreakDamage: 9999));
+        public SummonedUnitStatModel CloneStatModel = new SummonedUnitStatModel(true, reviveAfterScenesNpc: 2,
+            damageOptions:
+            new DamageOptions(9999, lessMassAttackBreakDamage: 9999, lessMassAttackIndividualDamage: 9999,
+                lessMassAttackIndividualBreakDamage: 9999));
     }
-    public static class NpcMechUtilModels
+
+    public class NpcMechUtilModels
     {
-        public static NpcMechUtilBase PurplePoisonNpcUtil = new NpcMechUtilBase(new NpcMechUtilBaseModel(
+        public NpcMechUtilBase PurplePoisonNpcUtil = new NpcMechUtilBase(new NpcMechUtilBaseModel(
             "PurpleBattleV21341",
             permanentBuffList: new List<BattleUnitBuf>
             {
@@ -41,37 +44,42 @@ namespace Purple_V21341.BLL
             mechOptions: new Dictionary<int, MechPhaseOptions>
             {
                 {
-                    0, new MechPhaseOptions(mechHp: 412, startMassAttack: true, setCounterToMax: true,
-                        changeCardCost: true, loweredCost: 2, extraDrawEachScene: 1, speedDieAdder: 2,
-                        summonUnit: new List<UnitModel>
-                        {
-                            UnitModels.NpcClone
-                        })
+                    0, new MechPhaseOptions(mechHp: 412, extraDrawEachScene: 1, speedDieAdder: 2)
                 },
                 {
                     1,
-                    new MechPhaseOptions(hasCustomMap: true, extraLightRecoverEachScene: 1,
+                    new MechPhaseOptions(hasCustomMap: true, extraLightRecoverEachScene: 1, startMassAttack: true,
+                        setCounterToMax: true,
+                        changeCardCost: true, loweredCost: 2,
                         speedDieAdder: 4,
                         extraDrawEachScene: 2,
                         egoMassAttackCardsOptions: new List<SpecialAttackCardOptions>
                             { new SpecialAttackCardOptions(new LorId(PurpleModParameters.PackageId, 13)) },
                         buffOptions: new MechBuffOptions(
                             eachRoundStartBuffsNotAloneCountSupportChar: new List<BattleUnitBuf>
-                                { new BattleUnitBuf_SmokeScreen_V21341() }))
+                                { new BattleUnitBuf_SmokeScreen_V21341() }), summonUnit: new List<UnitModel>
+                        {
+                            UnitModels.NpcClone
+                        })
                 }
             }));
     }
 
-    public static class MechUtilModels
+    public class MechUtilModels
     {
-        public static MechUtilBase PurplePoisonPlayerUtil = new MechUtilBase(new MechUtilBaseModel(new Dictionary<int, EgoOptions>{
-            {0,new EgoOptions(egoMaps: new Dictionary<LorId, MapModel>
+        public MechUtilBase PurplePoisonPlayerUtil = new MechUtilBase(new MechUtilBaseModel(
+            new Dictionary<int, EgoOptions>
+            {
                 {
+                    0, new EgoOptions(egoMaps: new Dictionary<LorId, MapModel>
                     {
-                        new LorId(PurpleModParameters.PackageId, 12),
-                        MapModels.PurplePoisonMap
-                    }
-                })}},
+                        {
+                            new LorId(PurpleModParameters.PackageId, 12),
+                            MapModels.PurplePoisonMap
+                        }
+                    })
+                }
+            },
             permanentBuffList: new List<BattleUnitBuf>
             {
                 new BattleUnitBuf_SmokeBomb_V21341()

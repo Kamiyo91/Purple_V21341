@@ -7,7 +7,7 @@ namespace Purple_V21341.Passives
     {
         public override void OnWaveStart()
         {
-            SetUtil(NpcMechUtilModels.PurplePoisonNpcUtil);
+            SetUtil(new NpcMechUtilModels().PurplePoisonNpcUtil);
             base.OnWaveStart();
         }
 

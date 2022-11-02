@@ -7,7 +7,7 @@ namespace Purple_V21341.Passives
     {
         public override void OnWaveStart()
         {
-            SetUtil(MechUtilModels.PurplePoisonPlayerUtil);
+            SetUtil(new MechUtilModels().PurplePoisonPlayerUtil);
             base.OnWaveStart();
         }
     }
