@@ -36,7 +36,7 @@ namespace Purple_V21341.BLL
     public class NpcMechUtilModels
     {
         public NpcMechUtilBase PurplePoisonNpcUtil = new NpcMechUtilBase(new NpcMechUtilBaseModel(
-            "PurpleBattleV21341",
+            "PurpleBattleV21341", new Dictionary<int, EgoOptions> { { 0, new EgoOptions() } },
             permanentBuffList: new List<BattleUnitBuf>
             {
                 new BattleUnitBuf_SmokeBomb_V21341()
@@ -52,7 +52,7 @@ namespace Purple_V21341.BLL
                         setCounterToMax: true,
                         changeCardCost: true, loweredCost: 2,
                         speedDieAdder: 4,
-                        extraDrawEachScene: 2,
+                        extraDrawEachScene: 2, forceEgo: true,
                         egoMassAttackCardsOptions: new List<SpecialAttackCardOptions>
                             { new SpecialAttackCardOptions(new LorId(PurpleModParameters.PackageId, 13)) },
                         buffOptions: new MechBuffOptions(

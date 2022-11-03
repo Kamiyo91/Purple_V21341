@@ -5,10 +5,10 @@ namespace Purple_V21341.Passives
 {
     public class PassiveAbility_WonderlandNpc_V21341 : PassiveAbility_NpcMechBase_DLL4221
     {
-        public override void OnWaveStart()
+        public override void Init(BattleUnitModel self)
         {
+            base.Init(self);
             SetUtil(new NpcMechUtilModels().PurplePoisonNpcUtil);
-            base.OnWaveStart();
         }
 
         public override int SpeedDiceNumAdder()
