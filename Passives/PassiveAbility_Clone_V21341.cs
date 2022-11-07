@@ -23,7 +23,7 @@ namespace Purple_V21341.Passives
 
         public override int SpeedDiceNumAdder()
         {
-            return owner.faction == Faction.Enemy ? 2 : base.SpeedDiceNumAdder();
+            return owner.faction == Faction.Enemy ? 1 : base.SpeedDiceNumAdder();
         }
     }
 }
