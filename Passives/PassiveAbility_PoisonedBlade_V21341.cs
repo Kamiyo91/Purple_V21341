@@ -23,9 +23,9 @@ namespace Purple_V21341.Passives
         {
             var target = behavior.card.target;
             if (target == null) return;
-            if (_random.Next(0, 100) <= 45 * Multiplier)
+            if (_random.Next(0, 100) <= 30 * Multiplier)
                 target.bufListDetail.AddKeywordBufByEtc(KeywordBuf.Binding, 1, owner);
-            if (_random.Next(0, 100) > 25 * Multiplier) return;
+            if (_random.Next(0, 100) > 15 * Multiplier) return;
             if (target.bufListDetail.GetActivatedBufList().Find(x => x is BattleUnitBuf_PurplePoison_V21341) is
                 BattleUnitBuf_PurplePoison_V21341 buff) buff.OnAddBuf(1);
             else target.bufListDetail.AddBuf(new BattleUnitBuf_PurplePoison_V21341());

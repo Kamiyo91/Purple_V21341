@@ -28,6 +28,7 @@ namespace Purple_V21341.BLL
     public class SummonedUnitStatModels
     {
         public SummonedUnitStatModel CloneStatModel = new SummonedUnitStatModel(true, reviveAfterScenesNpc: 2,
+            hpRecoveredWithRevive: 999,
             damageOptions:
             new DamageOptions(9999, lessMassAttackBreakDamage: 9999, lessMassAttackIndividualDamage: 9999,
                 lessMassAttackIndividualBreakDamage: 9999));
@@ -37,21 +38,21 @@ namespace Purple_V21341.BLL
     {
         public NpcMechUtilBase PurplePoisonNpcUtil = new NpcMechUtilBase(new NpcMechUtilBaseModel(
             "PurpleBattleV21341", new Dictionary<int, EgoOptions> { { 0, new EgoOptions() } },
-            permanentBuffList: new List<BattleUnitBuf>
-            {
-                new BattleUnitBuf_SmokeBomb_V21341()
-            },
             mechOptions: new Dictionary<int, MechPhaseOptions>
             {
                 {
-                    0, new MechPhaseOptions(mechHp: 412, extraDrawEachScene: 1, speedDieAdder: 2)
+                    0, new MechPhaseOptions(mechHp: 412, extraDrawEachScene: 1, speedDieAdder: 2,
+                        buffOptions: new MechBuffOptions(
+                            new List<BattleUnitBuf> { new BattleUnitBuf_SmokeBomb_V21341() }))
+                    //eachRoundStartBuffsNotAloneCountSupportChar: new List<BattleUnitBuf>
+                    //    { new BattleUnitBuf_SmokeScreen_V21341() }))
                 },
                 {
                     1,
                     new MechPhaseOptions(hasCustomMap: true, extraLightRecoverEachScene: 1, startMassAttack: true,
                         setCounterToMax: true,
                         changeCardCost: true, loweredCost: 2,
-                        speedDieAdder: 4,
+                        speedDieAdder: 3,
                         extraDrawEachScene: 2, forceEgo: true,
                         removebuffs: new List<BattleUnitBuf> { new BattleUnitBuf_SmokeBomb_V21341() },
                         egoMassAttackCardsOptions: new List<SpecialAttackCardOptions>
