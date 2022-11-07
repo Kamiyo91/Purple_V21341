@@ -8,7 +8,7 @@ namespace Purple_V21341.Buffs
         {
         }
 
-        protected override string keywordId => "SmokeBomb_V21341";
+        protected override string keywordId => "SmokeBombNpc_V21341";
         protected override string keywordIconId => "SmokeBomb_V21341";
         public override int MaxStack => 10;
         public override int MinStack => 10;
