@@ -53,9 +53,11 @@ namespace Purple_V21341.BLL
                         changeCardCost: true, loweredCost: 2,
                         speedDieAdder: 4,
                         extraDrawEachScene: 2, forceEgo: true,
+                        removebuffs: new List<BattleUnitBuf> { new BattleUnitBuf_SmokeBomb_V21341() },
                         egoMassAttackCardsOptions: new List<SpecialAttackCardOptions>
                             { new SpecialAttackCardOptions(new LorId(PurpleModParameters.PackageId, 13)) },
                         buffOptions: new MechBuffOptions(
+                            new List<BattleUnitBuf> { new BattleUnitBuf_SmokeBombNpc_V21341() },
                             eachRoundStartBuffsNotAloneCountSupportChar: new List<BattleUnitBuf>
                                 { new BattleUnitBuf_SmokeScreen_V21341() }), summonUnit: new List<UnitModel>
                         {
@@ -68,16 +70,11 @@ namespace Purple_V21341.BLL
     public class MechUtilModels
     {
         public MechUtilBase PurplePoisonPlayerUtil = new MechUtilBase(new MechUtilBaseModel(
-            new Dictionary<int, EgoOptions>
+            egoMaps: new Dictionary<LorId, MapModel>
             {
                 {
-                    0, new EgoOptions(egoMaps: new Dictionary<LorId, MapModel>
-                    {
-                        {
-                            new LorId(PurpleModParameters.PackageId, 12),
-                            MapModels.PurplePoisonMap
-                        }
-                    })
+                    new LorId(PurpleModParameters.PackageId, 12),
+                    MapModels.PurplePoisonMap
                 }
             },
             permanentBuffList: new List<BattleUnitBuf>

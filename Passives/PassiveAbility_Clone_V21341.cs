@@ -10,9 +10,15 @@ namespace Purple_V21341.Passives
         {
             var passive = owner.passiveDetail.AddPassive(new PassiveAbility_CloneHidedPassive_V21341());
             passive.OnWaveStart();
-            SetParameters(new SummonedUnitStatModels().CloneStatModel);
             if (!owner.bufListDetail.HasBuf<BattleUnitBuf_Clone_V21341>())
                 owner.bufListDetail.AddBuf(new BattleUnitBuf_Clone_V21341());
+            base.OnWaveStart();
+        }
+
+        public override void Init(BattleUnitModel self)
+        {
+            base.Init(self);
+            SetParameters(new SummonedUnitStatModels().CloneStatModel);
         }
 
         public override int SpeedDiceNumAdder()

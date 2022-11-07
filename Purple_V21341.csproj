@@ -79,6 +79,7 @@
     <Compile Include="Buffs\BattleUnitBuf_CardCostM1_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_Clone_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_PurplePoison_V21341.cs" />
+    <Compile Include="Buffs\BattleUnitBuf_SmokeBombNpc_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeBomb_V21341.cs" />
     <Compile Include="Buffs\BattleUnitBuf_SmokeScreen_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_ExhaleSmoke_V21341.cs" />

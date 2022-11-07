@@ -1,13 +1,15 @@
-﻿using LOR_DiceSystem;
-using UnityEngine;
+﻿using BigDLL4221.Buffs;
+using LOR_DiceSystem;
 
 namespace Purple_V21341.Buffs
 {
-    public class BattleUnitBuf_SmokeBomb_V21341 : BattleUnitBuf
+    public class BattleUnitBuf_SmokeBomb_V21341 : BattleUnitBuf_BaseBufChanged_DLL4221
     {
         public int HitCount;
         protected override string keywordId => "SmokeBomb_V21341";
         protected override string keywordIconId => "SmokeBomb_V21341";
+        public override int MaxStack => 10;
+        public override int AdderStackEachScene => -1;
 
         public override void OnRoundStartAfter()
         {
@@ -28,8 +30,7 @@ namespace Purple_V21341.Buffs
 
         public override void OnAddBuf(int addedStack)
         {
-            stack += addedStack;
-            stack = Mathf.Clamp(stack, 0, 10);
+            base.OnAddBuf(addedStack);
             if (stack > 9 && !_owner.bufListDetail.HasBuf<BattleUnitBuf_CardCostM1_V21341>())
                 _owner.bufListDetail.AddBuf(new BattleUnitBuf_CardCostM1_V21341());
         }
@@ -41,6 +42,7 @@ namespace Purple_V21341.Buffs
 
         public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
+            if (stack > 4) behavior.ApplyDiceStatBonus(new DiceStatBonus { min = 1, max = 1 });
             if (stack > 9) behavior.ApplyDiceStatBonus(new DiceStatBonus { min = 1, max = 1 });
         }
     }

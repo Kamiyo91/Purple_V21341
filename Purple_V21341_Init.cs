@@ -68,7 +68,10 @@ namespace Purple_V21341
                 new CardOptions(3, CardOption.Personal),
                 new CardOptions(4, CardOption.Personal),
                 new CardOptions(11, CardOption.Personal),
-                new CardOptions(12, CardOption.EgoPersonal,cardColorOptions:new CardColorOptions(Color.magenta,iconColor:HSVColors.Purple))
+                new CardOptions(12, CardOption.EgoPersonal),
+                new CardOptions(9,
+                    cardColorOptions: new CardColorOptions(Color.magenta, customIconColor: Color.magenta,
+                        useHSVFilter: false))
             });
         }
 
@@ -78,7 +81,9 @@ namespace Purple_V21341
             {
                 new PassiveOptions(4, false, bannedEgoFloorCards: true,
                     bannedEmotionCardSelection: true),
-                new PassiveOptions(5, false,passiveColorOptions:new PassiveColorOptions(Color.magenta,Color.magenta))
+                new PassiveOptions(5, false,
+                    passiveColorOptions: new PassiveColorOptions(Color.magenta, Color.magenta)),
+                new PassiveOptions(1, false, passiveColorOptions: new PassiveColorOptions(Color.magenta, Color.magenta))
             });
         }
 
@@ -86,7 +91,10 @@ namespace Purple_V21341
         {
             ModParameters.KeypageOptions.Add(PurpleModParameters.PackageId, new List<KeypageOptions>
             {
-                new KeypageOptions(10000001, bookCustomOptions: new BookCustomOptions(nameTextId: 1),keypageColorOptions:new KeypageColorOptions(Color.magenta,Color.magenta)),
+                new KeypageOptions(10000001, bookCustomOptions: new BookCustomOptions(nameTextId: 1),
+                    keypageColorOptions: new KeypageColorOptions(Color.magenta, Color.magenta)),
+                new KeypageOptions(1, bookCustomOptions: new BookCustomOptions(nameTextId: 1),
+                    keypageColorOptions: new KeypageColorOptions(Color.magenta, Color.magenta)),
                 new KeypageOptions(10000002, bookCustomOptions: new BookCustomOptions(nameTextId: 2))
             });
         }
