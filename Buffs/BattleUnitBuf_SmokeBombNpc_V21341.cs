@@ -1,4 +1,5 @@
 ﻿using BigDLL4221.Buffs;
+using LOR_DiceSystem;
 
 namespace Purple_V21341.Buffs
 {
@@ -22,6 +23,8 @@ namespace Purple_V21341.Buffs
 
         public override void BeforeRollDice(BattleDiceBehavior behavior)
         {
+            if (behavior.Detail != BehaviourDetail.Penetrate && behavior.Detail != BehaviourDetail.Slash &&
+                behavior.Detail != BehaviourDetail.Hit) return;
             if (stack > 4) behavior.ApplyDiceStatBonus(new DiceStatBonus { min = 1, max = 1 });
             if (stack > 9) behavior.ApplyDiceStatBonus(new DiceStatBonus { min = 1, max = 1 });
         }
