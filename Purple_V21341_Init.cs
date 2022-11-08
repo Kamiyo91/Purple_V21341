@@ -37,7 +37,9 @@ namespace Purple_V21341
             OnInitSprites();
             OnInitKeypages();
             OnInitCards();
+            OnInitStageOptions();
             OnInitPassives();
+            OnInitDropBook();
             OnInitRewards();
             OnInitCredenza();
         }
@@ -98,7 +100,20 @@ namespace Purple_V21341
                 new KeypageOptions(10000002, bookCustomOptions: new BookCustomOptions(nameTextId: 2))
             });
         }
-
+        private static void OnInitStageOptions()
+        {
+            ModParameters.StageOptions.Add(PurpleModParameters.PackageId, new List<StageOptions>
+            {
+                new StageOptions(1,stageColorOptions:new StageColorOptions(Color.magenta,Color.magenta))
+            });
+        }
+        private static void OnInitDropBook()
+        {
+            ModParameters.DropBookOptions.Add(PurpleModParameters.PackageId,new List<DropBookOptions>
+            {
+                new DropBookOptions(2, new DropBookColorOptions(Color.magenta,Color.magenta))
+            });
+        }
         private static void OnInitCredenza()
         {
             ModParameters.CredenzaOptions.Add(PurpleModParameters.PackageId, new CredenzaOptions(
