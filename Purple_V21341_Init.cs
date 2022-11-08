@@ -72,7 +72,7 @@ namespace Purple_V21341
                 new CardOptions(11, CardOption.Personal),
                 new CardOptions(12, CardOption.EgoPersonal),
                 new CardOptions(9,
-                    cardColorOptions: new CardColorOptions(Color.magenta, customIconColor: Color.magenta,
+                    cardColorOptions: new CardColorOptions(new Color(0.69f,0.4f,1f), customIconColor: new Color(0.69f,0.4f,1f),
                         useHSVFilter: false))
             });
         }
@@ -84,8 +84,8 @@ namespace Purple_V21341
                 new PassiveOptions(4, false, bannedEgoFloorCards: true,
                     bannedEmotionCardSelection: true),
                 new PassiveOptions(5, false,
-                    passiveColorOptions: new PassiveColorOptions(Color.magenta, Color.magenta)),
-                new PassiveOptions(1, false, passiveColorOptions: new PassiveColorOptions(Color.magenta, Color.magenta))
+                    passiveColorOptions: new PassiveColorOptions(new Color(0.69f,0.4f,1f), new Color(0.69f,0.4f,1f))),
+                new PassiveOptions(1, false, passiveColorOptions: new PassiveColorOptions(new Color(0.69f,0.4f,1f), new Color(0.69f,0.4f,1f)))
             });
         }
 
@@ -94,9 +94,9 @@ namespace Purple_V21341
             ModParameters.KeypageOptions.Add(PurpleModParameters.PackageId, new List<KeypageOptions>
             {
                 new KeypageOptions(10000001, bookCustomOptions: new BookCustomOptions(nameTextId: 1),
-                    keypageColorOptions: new KeypageColorOptions(Color.magenta, Color.magenta)),
+                    keypageColorOptions: new KeypageColorOptions(new Color(0.69f,0.4f,1f), new Color(0.69f,0.4f,1f))),
                 new KeypageOptions(1, bookCustomOptions: new BookCustomOptions(nameTextId: 1),
-                    keypageColorOptions: new KeypageColorOptions(Color.magenta, Color.magenta)),
+                    keypageColorOptions: new KeypageColorOptions(new Color(0.69f,0.4f,1f), new Color(0.69f,0.4f,1f))),
                 new KeypageOptions(10000002, bookCustomOptions: new BookCustomOptions(nameTextId: 2))
             });
         }
@@ -104,14 +104,14 @@ namespace Purple_V21341
         {
             ModParameters.StageOptions.Add(PurpleModParameters.PackageId, new List<StageOptions>
             {
-                new StageOptions(1,stageColorOptions:new StageColorOptions(Color.magenta,Color.magenta))
+                new StageOptions(1,stageColorOptions:new StageColorOptions(new Color(0.69f,0.4f,1f),new Color(0.69f,0.4f,1f)))
             });
         }
         private static void OnInitDropBook()
         {
             ModParameters.DropBookOptions.Add(PurpleModParameters.PackageId,new List<DropBookOptions>
             {
-                new DropBookOptions(2, new DropBookColorOptions(Color.magenta,Color.magenta))
+                new DropBookOptions(1, new DropBookColorOptions(new Color(0.69f,0.4f,1f),new Color(0.69f,0.4f,1f)))
             });
         }
         private static void OnInitCredenza()
