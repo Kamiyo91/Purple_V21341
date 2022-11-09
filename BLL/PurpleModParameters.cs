@@ -44,8 +44,6 @@ namespace Purple_V21341.BLL
                     0, new MechPhaseOptions(mechHp: 412, extraDrawEachScene: 1, speedDieAdder: 2,
                         buffOptions: new MechBuffOptions(
                             new List<BattleUnitBuf> { new BattleUnitBuf_SmokeBomb_V21341() }))
-                    //eachRoundStartBuffsNotAloneCountSupportChar: new List<BattleUnitBuf>
-                    //    { new BattleUnitBuf_SmokeScreen_V21341() }))
                 },
                 {
                     1,
@@ -78,9 +76,9 @@ namespace Purple_V21341.BLL
                     MapModels.PurplePoisonMap
                 }
             },
-            permanentBuffList: new List<BattleUnitBuf>
+            permanentBuffList: new List<PermanentBuffOptions>
             {
-                new BattleUnitBuf_SmokeBomb_V21341()
+                new PermanentBuffOptions(new BattleUnitBuf_SmokeBomb_V21341())
             }
             , personalCards: new Dictionary<LorId, PersonalCardOptions>
             {
