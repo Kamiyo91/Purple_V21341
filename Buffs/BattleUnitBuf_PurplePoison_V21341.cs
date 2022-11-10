@@ -6,6 +6,7 @@ namespace Purple_V21341.Buffs
     {
         protected override string keywordId => "WonderlandPosion_V21341";
         protected override string keywordIconId => "WonderlandPosion_V21341";
+        public override BufPositiveType positiveType => BufPositiveType.Negative;
 
         public override void OnRoundStartAfter()
         {
