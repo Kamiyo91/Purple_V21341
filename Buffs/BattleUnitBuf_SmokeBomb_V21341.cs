@@ -5,10 +5,12 @@ namespace Purple_V21341.Buffs
 {
     public class BattleUnitBuf_SmokeBomb_V21341 : BattleUnitBuf_BaseBufChanged_DLL4221
     {
+        public int HitCount;
+
         public BattleUnitBuf_SmokeBomb_V21341() : base(infinite: true, lastOneScene: false)
         {
         }
-        public int HitCount;
+
         protected override string keywordId => "SmokeBomb_V21341";
         protected override string keywordIconId => "SmokeBomb_V21341";
         public override int MaxStack => 10;

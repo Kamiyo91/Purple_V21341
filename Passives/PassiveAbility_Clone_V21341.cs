@@ -18,7 +18,7 @@ namespace Purple_V21341.Passives
         public override void Init(BattleUnitModel self)
         {
             base.Init(self);
-            SetParameters(new SummonedUnitStatModels().CloneStatModel,owner.faction == Faction.Player);
+            SetParameters(new SummonedUnitStatModels().CloneStatModel, owner.faction == Faction.Player);
         }
 
         public override int SpeedDiceNumAdder()
