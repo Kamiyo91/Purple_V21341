@@ -27,8 +27,7 @@ namespace Purple_V21341.Cards
                     .FirstOrDefault(x => x is BattleUnitBuf_SmokeBomb_V21341) is BattleUnitBuf_SmokeBomb_V21341
                 buff)
                 buff.OnAddBuf(-5);
-            SummonSpecialUnit(Singleton<StageController>.Instance.GetCurrentStageFloorModel(), 10000002,
-                unit.emotionDetail.EmotionLevel);
+            SummonSpecialUnit(unit.emotionDetail.EmotionLevel);
             UnitUtil.RefreshCombatUI();
         }
 
@@ -37,11 +36,9 @@ namespace Purple_V21341.Cards
             return true;
         }
 
-        public static BattleUnitModel SummonSpecialUnit(StageLibraryFloorModel floor, int unitId,
-            int emotionLevel)
+        public static BattleUnitModel SummonSpecialUnit(int emotionLevel)
         {
-            return UnitUtil.AddNewUnitPlayerSideCustomData(floor,
-                UnitModels.PlayerClone,
+            return UnitUtil.AddNewUnitPlayerSideCustomData(UnitModels.PlayerClone,
                 BattleObjectManager.instance.GetList(Faction.Player).Count, emotionLevel);
         }
     }
