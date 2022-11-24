@@ -86,7 +86,8 @@
     <Compile Include="Cards\DiceCardSelfAbility_TimePerception_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_WonderlandMassAttackNpc_V21341.cs" />
     <Compile Include="Cards\DiceCardSelfAbility_WonderlandMassAttack_V21341.cs" />
-    <Compile Include="Dice\DiceCardAbility_ClashWin1Smoke_V21341.cs" />
+    <Compile Include="Dice\DiceCardAbility_ClashWin2Smoke_V21341.cs" />
+    <Compile Include="Dice\DiceCardAbility_OnHitGain1SmokeBomb_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_Inflict2PurplePoison_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_Inflict1PurplePoison_V21341.cs" />
     <Compile Include="Dice\DiceCardAbility_WonderlandEvasion_V21341.cs" />

@@ -8,7 +8,7 @@
             if (!(owner.bufListDetail.GetActivatedBuf(KeywordBuf.Smoke) is BattleUnitBuf_smoke smoke) ||
                 smoke.stack < 3)
             {
-                owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 2, owner);
+                owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 3, owner);
                 return;
             }
 

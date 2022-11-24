@@ -128,7 +128,8 @@ namespace Purple_V21341
         {
             ModParameters.CredenzaOptions.Add(PurpleModParameters.PackageId, new CredenzaOptions(
                 CredenzaEnum.ModifiedCredenza, new List<int> { 10000001 },
-                "PurplePoisonV21341.Mod", "", "PurplePoisonV21341.Mod",bookDataColor:new CredenzaColorOptions(new Color(0.69f, 0.4f, 1f), new Color(0.69f, 0.4f, 1f))));
+                "PurplePoisonV21341.Mod", "", "PurplePoisonV21341.Mod",
+                bookDataColor: new CredenzaColorOptions(new Color(0.69f, 0.4f, 1f), new Color(0.69f, 0.4f, 1f))));
         }
     }
 }
