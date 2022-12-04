@@ -20,6 +20,7 @@ namespace Purple_V21341
             CardUtil.ChangeCardItem(ItemXmlDataList.instance, PurpleModParameters.PackageId);
             PassiveUtil.ChangePassiveItem(PurpleModParameters.PackageId);
             LocalizeUtil.AddGlobalLocalize(PurpleModParameters.PackageId);
+            ArtUtil.MakeCustomBook(PurpleModParameters.PackageId);
             ArtUtil.PreLoadBufIcons();
             LocalizeUtil.RemoveError();
             CardUtil.InitKeywordsList(new List<Assembly> { Assembly.GetExecutingAssembly() });
@@ -34,6 +35,7 @@ namespace Purple_V21341
                 Uri.UnescapeDataString(new UriBuilder(Assembly.GetExecutingAssembly().CodeBase).Path));
             ModParameters.Path.Add(PurpleModParameters.PackageId, PurpleModParameters.Path);
             ModParameters.DefaultKeyword.Add(PurpleModParameters.PackageId, "WonderlandModPage_V21341");
+            ModParameters.Assemblies.Add(Assembly.GetExecutingAssembly());
             OnInitSprites();
             OnInitKeypages();
             OnInitCards();
@@ -42,6 +44,7 @@ namespace Purple_V21341
             OnInitDropBook();
             OnInitRewards();
             OnInitCredenza();
+            OnInitCustomSkins();
         }
 
         private static void OnInitSprites()
@@ -52,7 +55,13 @@ namespace Purple_V21341
                 new SpriteOptions(SpriteEnum.Custom, 10000002, "WonderlandDefault_V21341")
             });
         }
-
+        private static void OnInitCustomSkins()
+        {
+            ModParameters.CustomBookSkinsOptions.Add(PurpleModParameters.PackageId, new List<CustomBookSkinsOption>
+            {
+                new CustomBookSkinsOption("Wonderland_V21341", 10000001, characterNameId: 1)
+            });
+        }
         private static void OnInitRewards()
         {
             ModParameters.StartUpRewardOptions.Add(new RewardOptions(new Dictionary<LorId, int>
