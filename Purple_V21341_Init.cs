@@ -59,7 +59,7 @@ namespace Purple_V21341
         {
             ModParameters.CustomBookSkinsOptions.Add(PurpleModParameters.PackageId, new List<CustomBookSkinsOption>
             {
-                new CustomBookSkinsOption("Wonderland_V21341", 10000001, characterNameId: 1)
+                new CustomBookSkinsOption("Wonderland_V21341", 10000001, characterNameId: 1,iconId:"WonderlandPosion_V21341")
             });
         }
         private static void OnInitRewards()
