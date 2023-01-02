@@ -63,7 +63,7 @@ namespace Purple_V21341.BLL
                             UnitModels.NpcClone
                         })
                 }
-            }));
+            }), PurpleModParameters.PackageId);
     }
 
     public class MechUtilModels
@@ -91,6 +91,6 @@ namespace Purple_V21341.BLL
                 { new LorId(PurpleModParameters.PackageId, 4), new PersonalCardOptions(onPlayCard: true) },
                 { new LorId(PurpleModParameters.PackageId, 11), new PersonalCardOptions(onPlayCard: true) },
                 { new LorId(PurpleModParameters.PackageId, 12), new PersonalCardOptions() }
-            }));
+            }), PurpleModParameters.PackageId);
     }
 }

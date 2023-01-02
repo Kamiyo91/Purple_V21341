@@ -25,7 +25,6 @@ namespace Purple_V21341
             LocalizeUtil.RemoveError();
             CardUtil.InitKeywordsList(new List<Assembly> { Assembly.GetExecutingAssembly() });
             ArtUtil.InitCustomEffects(new List<Assembly> { Assembly.GetExecutingAssembly() });
-            CustomMapHandler.ModResources.CacheInit.InitCustomMapFiles(Assembly.GetExecutingAssembly());
         }
 
         private static void OnInitParameters()
@@ -55,6 +54,7 @@ namespace Purple_V21341
                 new SpriteOptions(SpriteEnum.Custom, 10000002, "WonderlandDefault_V21341")
             });
         }
+
         private static void OnInitCustomSkins()
         {
             ModParameters.CustomBookSkinsOptions.Add(PurpleModParameters.PackageId, new List<CustomBookSkinsOption>
@@ -62,6 +62,7 @@ namespace Purple_V21341
                 new CustomBookSkinsOption("Wonderland_V21341", 10000001, characterNameId: 1)
             });
         }
+
         private static void OnInitRewards()
         {
             ModParameters.StartUpRewardOptions.Add(new RewardOptions(new Dictionary<LorId, int>

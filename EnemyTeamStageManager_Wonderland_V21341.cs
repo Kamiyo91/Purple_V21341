@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using BigDLL4221.Models;
 using BigDLL4221.StageManagers;
+using CustomMapUtility;
 using Purple_V21341.BLL;
 
 namespace Purple_V21341
@@ -9,7 +10,8 @@ namespace Purple_V21341
     {
         public override void OnWaveStart()
         {
-            SetParameters(new NpcMechUtilModels().PurplePoisonNpcUtil,
+            SetParameters(CustomMapHandler.GetCMU(PurpleModParameters.PackageId),
+                new NpcMechUtilModels().PurplePoisonNpcUtil,
                 new List<MapModel> { MapModels.PurplePoisonMap });
             base.OnWaveStart();
         }
